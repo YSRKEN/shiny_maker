@@ -114,6 +114,11 @@
             "browserTarget": "ShinyMaker:build",
             "serverTarget": "ShinyMaker:server",
             "route": "shell"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ShinyMaker:build:production"
+            }
           }
         }
       }
