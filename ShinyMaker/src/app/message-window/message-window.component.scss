@@ -1,0 +1,174 @@
+.shiny-message-window {
+  position: relative;
+}
+.message-window-1 {
+  position: absolute;
+  width: 850px;
+  height: 130px;
+  top: 40px;
+  left: 0px;
+  background: #FDEFEF;
+  border-radius: 10px;
+}
+.message-window-2 {
+  position: absolute;
+  width: 380px;
+  height: 70px;
+  top: 0px;
+  left: 0px;
+  background: #FDEFEF;
+}
+.message-window-3 {
+  position: absolute;
+  width: 60px;
+  height: 50px;
+  top: 0px;
+  left: 350px;
+  border-radius: 10px;
+  transform:skewX(37deg);
+  background: #FDEFEF;
+}
+.star-large-box {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 10px;
+  left: 15px;
+  background: #E49FB4;
+}
+.star-large-blocker-1 {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  top: 10px;
+  left: 15px;
+  border-radius: 0 0 15px 0;
+  background: #FDEFEF;
+}
+.star-large-blocker-2 {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  top: 10px;
+  left: 30px;
+  border-radius: 0 0 0 15px;
+  background: #FDEFEF;
+}
+.star-large-blocker-3 {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  top: 25px;
+  left: 30px;
+  border-radius: 15px 0 0 0;
+  background: #FDEFEF;
+}
+.star-large-blocker-4 {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  top: 25px;
+  left: 15px;
+  border-radius: 0 15px 0 0;
+  background: #FDEFEF;
+}
+.message-window-dotline {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  width: 400px;
+  border-top: 4px dotted #E39FB4;
+}
+.message-title {
+  font-family: 'Kosugi Maru', sans-serif;
+  position: absolute;
+  top: 8px;
+  left: 50px;
+  font-size: 30px;
+  line-height: 1.0 !important;
+}
+.message-text {
+  font-family: 'Kosugi Maru', sans-serif;
+  position: absolute;
+  top: 20px;
+  left: 40px;
+  line-height: 34px;
+  font-size: 24px;
+}
+.star-small-box {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  top: 30px;
+  left: 33px;
+  background: #E49FB4;
+  z-index: 1;
+}
+.star-small-blocker-1 {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  top: 30px;
+  left: 33px;
+  border-radius: 0 0 6px 0;
+  background: #FDEFEF;
+  z-index: 1;
+}
+.star-small-blocker-2 {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  top: 30px;
+  left: 39px;
+  border-radius: 0 0 0 6px;
+  background: #FDEFEF;
+  z-index: 1;
+}
+.star-small-blocker-3 {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  top: 36px;
+  left: 39px;
+  border-radius: 6px 0 0 0;
+  background: #FDEFEF;
+  z-index: 1;
+}
+.star-small-blocker-4 {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  top: 36px;
+  left: 33px;
+  border-radius: 0 6px 0 0;
+  background: #FDEFEF;
+  z-index: 1;
+}
+.message-arrow-line-1 {
+  position: absolute;
+  width: 20px;
+  height: 6px;
+  left: 810px;
+  top: 145px;
+  border-radius: 3px;
+  background: #605462;
+}
+.message-arrow-line-2 {
+  position: absolute;
+  width: 6px;
+  height: 20px;
+  left: 824px;
+  top: 130px;
+  border-radius: 3px;
+  background: #605462;
+}
+.message-arrow-line-3 {
+  position: absolute;
+  width: 6px;
+  height: 22px;
+  left: 817px;
+  top: 130px;
+  transform: rotate(-45deg);
+  border-radius: 3px;
+  background: #605462;
+}
