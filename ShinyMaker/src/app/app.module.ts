@@ -7,11 +7,13 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { RouterModule } from '@angular/router';
 import { MessageWindowComponent } from './message-window/message-window.component';
+import { MainWindowComponent } from './main-window/main-window.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MessageWindowComponent
+    MessageWindowComponent,
+    MainWindowComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
