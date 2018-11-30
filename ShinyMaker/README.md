@@ -25,3 +25,9 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Release
+
+`ng run ShinyMaker:app-shell:production`でリリースビルド。  
+`npx node-static ./dist/ShinyMaker --spa --port=9000`でリリースビルドを[http://localhost:9000/](http://localhost:9000/)上に本番実行。  
+`firebase deploy`でGoogle Firebase上にデプロイ。
