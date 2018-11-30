@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { stringify } from '@angular/core/src/render3/util';
 
 @Component({
   selector: 'app-message-window',
@@ -7,12 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessageWindowComponent implements OnInit {
 
-  name: string = '真乃'
-  text: string = 'はい、鳩さんとは仲良しで、\nつい時間を忘れて遊んでしまうんです'
+  /**
+   * 名前欄
+   */
+  @Input() name: string;
+
+  /**
+   * メッセージ欄
+   */
+  @Input() text: string;
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  /**
+   * @Inputでは改行文字が自動で修正されるのでその対策
+   */
+  get messageText(): string {
+    return this.text.replace('\\n', '\n');
+  }
 }
