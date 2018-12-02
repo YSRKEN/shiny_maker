@@ -1,8 +1,8 @@
-<div class="overall">
+<div #overall class="overall">
   <!-- 名前欄 -->
   <div class="message-name-area">
     <!-- 名前 -->
-    <span class="message-name-style">{{name}}</span>
+    <span class="message-name-style" [ngStyle]="messageNameStylePlus">{{name}}</span>
     <!-- 星 -->
     <div class="star-box-large">
       <div class="star-blocker-1"></div>
@@ -23,7 +23,7 @@
   <!-- テキスト欄 -->
   <div class="message-text-area">
     <!-- テキスト -->
-    <pre class="message-text-style">{{messageText}}</pre>
+    <pre class="message-text-style" [ngStyle]="messageTextStylePlus">{{messageText}}</pre>
   </div>
   <!-- 矢印 -->
   <div class="arrow-box">

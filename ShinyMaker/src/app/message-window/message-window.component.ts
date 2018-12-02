@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { stringify } from '@angular/core/src/render3/util';
 
 @Component({
@@ -18,9 +18,13 @@ export class MessageWindowComponent implements OnInit {
    */
   @Input() text: string;
 
+  // 自分自身のサイズを知るための仕掛け
+  @ViewChild('overall') overall: ElementRef;
+
   constructor() { }
 
   ngOnInit() {
+    console.log('' + this.overall.nativeElement.offsetWidth + 'x' + this.overall.nativeElement.offsetHeight);
   }
 
   /**
@@ -28,5 +32,23 @@ export class MessageWindowComponent implements OnInit {
    */
   get messageText(): string {
     return this.text.replace('\\n', '\n');
+  }
+
+  /**
+   * 名前欄のフォントサイズ
+   */
+  get messageNameStylePlus() {
+    return {
+      fontSize: '' + (30 * this.overall.nativeElement.offsetWidth / 850) + 'px';
+    }
+  }
+
+  /**
+   * テキスト欄のフォントサイズ
+   */
+  get messageTextStylePlus() {
+    return {
+      fontSize: '' + (24 * this.overall.nativeElement.offsetWidth / 850) + 'px';
+    }
   }
 }
