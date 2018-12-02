@@ -115,3 +115,66 @@
   border-radius: 0 100% 0 0;
   background: #FDEFEF;
 }
+
+// 罫線
+.dotline {
+  position: absolute;
+  width: calc(100% * 400 / 850);
+  left: 10px;
+  top: calc(100% * 45 / 170);
+  border-top: 4px dotted #E39FB4;
+  z-index: 2;
+}
+
+// 枠の外形を整えるための飾り
+.frame-decoration{
+  position: absolute;
+  width: calc(100% * 60 / 850);
+  height: calc(100% * 50 / 170);
+  top: 0;
+  left: calc(100% * 350 / 850);
+  //border-radius: calc(100% * 10 / 170);
+  border-radius: 10px;
+  transform:skewX(37deg);
+  background: #FDEFEF;
+}
+
+// 矢印の横線
+.arrow-line-1{
+  position: absolute;
+  width: calc(100% * 20 / 850);
+  height: calc(100% * 6 / 170);
+  left: calc(100% * 810 / 850);
+  top: calc(100% * 145 / 170);
+  //border-radius: calc(100% * 3 / 170);
+  border-radius: 3px;
+  background: #605462;
+  z-index: 2;
+}
+
+// 矢印の縦線
+.arrow-line-2{
+  position: absolute;
+  width: calc(100% * 6 / 850);
+  height: calc(100% * 20 / 170);
+  left: calc(100% * 824 / 850);
+  top: calc(100% * 130 / 170);
+  //border-radius: calc(100% * 3 / 170);
+  border-radius: 3px;
+  background: #605462;
+  z-index: 2;
+}
+
+// 矢印の斜め線
+.arrow-line-3{
+  position: absolute;
+  width: calc(100% * 6 / 850);
+  height: calc(100% * 22 / 170);
+  left: calc(100% * 817 / 850);
+  top: calc(100% * 130 / 170);
+  transform: rotate(-45deg);
+  //border-radius: calc(100% * 3 / 170);
+  border-radius: 3px;
+  background: #605462;
+  z-index: 2;
+}
