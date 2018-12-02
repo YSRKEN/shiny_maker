@@ -13,8 +13,7 @@
   height: calc(100% * 40 / 170);
   left: 0;
   top: 0;
-  //border-radius: calc(100% * 10 / 170);
-  border-radius: 10px 10px 0 0;
+  border-top-left-radius: calc(100% * 10 / 380) calc(100% * 10 / 40);
 }
 
 // テキスト欄(850x130)
@@ -25,8 +24,10 @@
   height: calc(100% * 130 / 170);
   left: 0;
   top: calc(100% * 40 / 170);
-  //border-radius: calc(100% * 10 / 170);
-  border-radius: 10px;
+
+  border-top-right-radius: calc(100% * 10 / 850) calc(100% * 10 / 130);
+  border-bottom-right-radius: calc(100% * 10 / 850) calc(100% * 10 / 130);
+  border-bottom-left-radius: calc(100% * 10 / 850) calc(100% * 10 / 130);
   z-index: 1;
 }
 
@@ -133,8 +134,7 @@
   height: calc(100% * 50 / 170);
   top: 0;
   left: calc(100% * 350 / 850);
-  //border-radius: calc(100% * 10 / 170);
-  border-radius: 10px;
+  border-radius: calc(100% * 10 / 60) calc(100% * 10 / 50);
   transform:skewX(37deg);
   background: #FDEFEF;
 }
@@ -146,7 +146,7 @@
   height: calc(100% * 6 / 170);
   left: calc(100% * 810 / 850);
   top: calc(100% * 145 / 170);
-  //border-radius: calc(100% * 3 / 170);
+  //border-radius: calc(100% * 3 / 20) calc(100% * 3 / 6);
   border-radius: 3px;
   background: #605462;
   z-index: 2;
@@ -159,7 +159,7 @@
   height: calc(100% * 20 / 170);
   left: calc(100% * 824 / 850);
   top: calc(100% * 130 / 170);
-  //border-radius: calc(100% * 3 / 170);
+  //border-radius: calc(100% * 3 / 6) calc(100% * 3 / 20);
   border-radius: 3px;
   background: #605462;
   z-index: 2;
@@ -173,7 +173,7 @@
   left: calc(100% * 817 / 850);
   top: calc(100% * 130 / 170);
   transform: rotate(-45deg);
-  //border-radius: calc(100% * 3 / 170);
+  //border-radius: calc(100% * 3 / 6) calc(100% * 3 / 22);
   border-radius: 3px;
   background: #605462;
   z-index: 2;
