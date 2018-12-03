@@ -24,7 +24,6 @@ export class MessageWindowComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log('' + this.overall.nativeElement.offsetWidth + 'x' + this.overall.nativeElement.offsetHeight);
   }
 
   /**
@@ -35,11 +34,18 @@ export class MessageWindowComponent implements OnInit {
   }
 
   /**
+   * 自身の横幅
+   */
+  get width(): number {
+    return this.overall.nativeElement.offsetWidth;
+  }
+
+  /**
    * 名前欄のフォントサイズ
    */
   get messageNameStylePlus() {
     return {
-      fontSize: '' + (30 * this.overall.nativeElement.offsetWidth / 850) + 'px';
+      fontSize: '' + (30 * this.width / 850) + 'px'
     }
   }
 
@@ -48,7 +54,14 @@ export class MessageWindowComponent implements OnInit {
    */
   get messageTextStylePlus() {
     return {
-      fontSize: '' + (24 * this.overall.nativeElement.offsetWidth / 850) + 'px';
+      fontSize: '' + (24 * this.width / 850) + 'px'
+    }
+  }
+
+  get overallStylePlus() {
+    return {
+      width: '' + this.width + 'px',
+      height: '' + (this.width / 5) + 'px'
     }
   }
 }
