@@ -18,6 +18,9 @@
 .p-style .message-name-area {
   background: #E0EBF3;
 }
+.haduki-style .message-name-area {
+  background: #EBF4E1;
+}
 
 // テキスト欄(850x130)
 .message-text-area {
@@ -36,6 +39,9 @@
 }
 .p-style .message-text-area {
   background: #E0EBF3;
+}
+.haduki-style .message-text-area {
+  background: #EBF4E1;
 }
 
 // 名前
@@ -70,6 +76,9 @@
 .p-style .star-box-large {
   background: #8DAFD2;
 }
+.haduki-style .star-box-large {
+  background: #B0C59C;
+}
 
 // 小さい方の星を造形するための外枠
 .star-box-small {
@@ -84,6 +93,9 @@
 }
 .p-style .star-box-small {
   background: #8DAFD2;
+}
+.haduki-style .star-box-small {
+  background: #B0C59C;
 }
 
 // 左上を塗りつぶすための細工
@@ -101,6 +113,9 @@
 .p-style .star-blocker-1 {
   background: #E0EBF3;
 }
+.haduki-style .star-blocker-1 {
+  background: #EBF4E1;
+}
 
 // 右上を塗りつぶすための細工
 .star-blocker-2 {
@@ -116,6 +131,9 @@
 }
 .p-style .star-blocker-2 {
   background: #E0EBF3;
+}
+.haduki-style .star-blocker-2 {
+  background: #EBF4E1;
 }
 
 // 右下を塗りつぶすための細工
@@ -133,6 +151,9 @@
 .p-style .star-blocker-3 {
   background: #E0EBF3;
 }
+.haduki-style .star-blocker-3 {
+  background: #EBF4E1;
+}
 
 // 左下を塗りつぶすための細工
 .star-blocker-4 {
@@ -149,6 +170,9 @@
 .p-style .star-blocker-4 {
   background: #E0EBF3;
 }
+.haduki-style .star-blocker-4 {
+  background: #EBF4E1;
+}
 
 // 罫線
 .dotline {
@@ -164,6 +188,9 @@
 .p-style .dotline {
   border-top: 4px dotted #8DAFD2;
 }
+.haduki-style .dotline {
+  border-top: 4px dotted #B5C4A3;
+}
 
 // 枠の外形を整えるための飾り
 .frame-decoration{
@@ -174,13 +201,15 @@
   left: calc(100% * 350 / 850);
   border-radius: calc(100% * 10 / 60) calc(100% * 10 / 50);
   transform:skewX(37deg);
-  background: #FDEFEF;
 }
 .idol-style .frame-decoration {
   background: #FDEFEF;
 }
 .p-style .frame-decoration {
   background: #E0EBF3;
+}
+.haduki-style .frame-decoration {
+  background: #EBF4E1;
 }
 
 // 矢印の横線

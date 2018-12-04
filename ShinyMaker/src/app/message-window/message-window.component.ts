@@ -18,6 +18,16 @@ export class MessageWindowComponent implements OnInit {
    */
   @Input() text: string;
 
+  /**
+   * アイドルスタイルに変化する一覧
+   */
+  idolNameList = [
+    '真乃', '灯織', 'めぐる', '恋鐘',
+    '摩美々', '咲耶', '結華', '霧子',
+    '果穂', '智代子', '樹里', '凛世',
+    '夏葉', '甘奈', '甜花','千雪',
+  ]
+
   // 自分自身のサイズを知るための仕掛け
   @ViewChild('overall') overall: ElementRef;
 
@@ -68,8 +78,12 @@ export class MessageWindowComponent implements OnInit {
   get overallClassPlus() {
     if (this.name == 'プロデューサー') {
       return 'p-style';
-    }else {
+    } else if (this.idolNameList.includes(this.name)) {
       return 'idol-style';
+    } else if(this.name == 'はづき') {
+      return 'haduki-style';
+    } else {
+      return '';
     }
   }
 }
