@@ -7,7 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainWindowComponent implements OnInit {
 
+  /**
+   * アプリのタイトル
+   */
   title = 'シャニマス会話メーカー';
+
+  /**
+   * キャラ名
+   */
+  name = '真乃';
+
+  /**
+   * 発言
+   */
+  message = 'はい、鳩さんとは仲良しで、\nつい時間を忘れて遊んでしまうんです';
 
   constructor() { }
 
