@@ -21,6 +21,9 @@
 .haduki-style .message-name-area {
   background: #EBF4E1;
 }
+.other-style .message-name-area {
+  background: #EDEDED;
+}
 
 // テキスト欄(850x130)
 .message-text-area {
@@ -42,6 +45,9 @@
 }
 .haduki-style .message-text-area {
   background: #EBF4E1;
+}
+.other-style .message-text-area {
+  background: #EDEDED;
 }
 
 // 名前
@@ -79,6 +85,9 @@
 .haduki-style .star-box-large {
   background: #B0C59C;
 }
+.other-style .star-box-large {
+  background: #AEAEAE;
+}
 
 // 小さい方の星を造形するための外枠
 .star-box-small {
@@ -96,6 +105,9 @@
 }
 .haduki-style .star-box-small {
   background: #B0C59C;
+}
+.other-style .star-box-small {
+  background: #AEAEAE;
 }
 
 // 左上を塗りつぶすための細工
@@ -116,6 +128,9 @@
 .haduki-style .star-blocker-1 {
   background: #EBF4E1;
 }
+.other-style .star-blocker-1 {
+  background: #EDEDED;
+}
 
 // 右上を塗りつぶすための細工
 .star-blocker-2 {
@@ -134,6 +149,9 @@
 }
 .haduki-style .star-blocker-2 {
   background: #EBF4E1;
+}
+.other-style .star-blocker-2 {
+  background: #EDEDED;
 }
 
 // 右下を塗りつぶすための細工
@@ -154,6 +172,9 @@
 .haduki-style .star-blocker-3 {
   background: #EBF4E1;
 }
+.other-style .star-blocker-3 {
+  background: #EDEDED;
+}
 
 // 左下を塗りつぶすための細工
 .star-blocker-4 {
@@ -173,6 +194,9 @@
 .haduki-style .star-blocker-4 {
   background: #EBF4E1;
 }
+.other-style .star-blocker-4 {
+  background: #EDEDED;
+}
 
 // 罫線
 .dotline {
@@ -190,6 +214,9 @@
 }
 .haduki-style .dotline {
   border-top: 4px dotted #B5C4A3;
+}
+.other-style .dotline {
+  border-top: 4px dotted #A4A4A4;
 }
 
 // 枠の外形を整えるための飾り
@@ -210,6 +237,9 @@
 }
 .haduki-style .frame-decoration {
   background: #EBF4E1;
+}
+.other-style .frame-decoration {
+  background: #EDEDED;
 }
 
 // 矢印の横線

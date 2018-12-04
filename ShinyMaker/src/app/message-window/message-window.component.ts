@@ -83,7 +83,7 @@ export class MessageWindowComponent implements OnInit {
     } else if(this.name == 'はづき') {
       return 'haduki-style';
     } else {
-      return '';
+      return 'other-style';
     }
   }
 }

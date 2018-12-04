@@ -35,9 +35,8 @@ export class MainWindowComponent implements OnInit {
     { key: 'プロデューサー', name: 'プロデューサー' },
     { key: 'はづき', name: '七草はづき' },
     { key: '社長', name: '天井社長' },
-    { key: 'その他', name: 'その他' }
+    { key: '', name: 'その他' }
   ]
-
 
   /**
    * キャラ名
