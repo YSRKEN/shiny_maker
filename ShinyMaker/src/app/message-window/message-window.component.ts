@@ -64,4 +64,12 @@ export class MessageWindowComponent implements OnInit {
       height: '' + (this.width / 5) + 'px'
     }
   }
+
+  get overallClassPlus() {
+    if (this.name == 'プロデューサー') {
+      return 'p-style';
+    }else {
+      return 'idol-style';
+    }
+  }
 }

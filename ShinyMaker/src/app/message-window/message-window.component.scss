@@ -6,27 +6,36 @@
 // 名前欄(380x40)
 .message-name-area {
   position: absolute;
-  background: #FDEFEF;
   width: calc(100% * 380 / 850);
   height: calc(100% * 40 / 170);
   left: 0;
   top: 0;
   border-top-left-radius: calc(100% * 10 / 380) calc(100% * 10 / 40);
 }
+.idol-style .message-name-area {
+  background: #FDEFEF;
+}
+.p-style .message-name-area {
+  background: #E0EBF3;
+}
 
 // テキスト欄(850x130)
 .message-text-area {
   position: absolute;
-  background: #FDEFEF;
   width: 100%;
   height: calc(100% * 130 / 170);
   left: 0;
   top: calc(100% * 40 / 170);
-
   border-top-right-radius: calc(100% * 10 / 850) calc(100% * 10 / 130);
   border-bottom-right-radius: calc(100% * 10 / 850) calc(100% * 10 / 130);
   border-bottom-left-radius: calc(100% * 10 / 850) calc(100% * 10 / 130);
   z-index: 1;
+}
+.idol-style .message-text-area {
+  background: #FDEFEF;
+}
+.p-style .message-text-area {
+  background: #E0EBF3;
 }
 
 // 名前
@@ -54,7 +63,12 @@
   height: calc(100% * 30 / 40);
   left: calc(100% * 15 / 380);
   top: calc(100% * 10 / 40);
+}
+.idol-style .star-box-large {
   background: #E49FB4;
+}
+.p-style .star-box-large {
+  background: #8DAFD2;
 }
 
 // 小さい方の星を造形するための外枠
@@ -64,7 +78,12 @@
   height: calc(100% * 12 / 40);
   left: calc(100% * 33 / 380);
   top: calc(100% * 30 / 40);
+}
+.idol-style .star-box-small {
   background: #E49FB4;
+}
+.p-style .star-box-small {
+  background: #8DAFD2;
 }
 
 // 左上を塗りつぶすための細工
@@ -75,7 +94,12 @@
   left: 0;
   top: 0;
   border-radius: 0 0 100% 0;
+}
+.idol-style .star-blocker-1 {
   background: #FDEFEF;
+}
+.p-style .star-blocker-1 {
+  background: #E0EBF3;
 }
 
 // 右上を塗りつぶすための細工
@@ -86,7 +110,12 @@
   left: 50%;
   top: 0;
   border-radius: 0 0 0 100%;
+}
+.idol-style .star-blocker-2 {
   background: #FDEFEF;
+}
+.p-style .star-blocker-2 {
+  background: #E0EBF3;
 }
 
 // 右下を塗りつぶすための細工
@@ -97,7 +126,12 @@
   left: 50%;
   top: 50%;
   border-radius: 100% 0 0 0;
+}
+.idol-style .star-blocker-3 {
   background: #FDEFEF;
+}
+.p-style .star-blocker-3 {
+  background: #E0EBF3;
 }
 
 // 左下を塗りつぶすための細工
@@ -108,7 +142,12 @@
   left: 0;
   top: 50%;
   border-radius: 0 100% 0 0;
+}
+.idol-style .star-blocker-4 {
   background: #FDEFEF;
+}
+.p-style .star-blocker-4 {
+  background: #E0EBF3;
 }
 
 // 罫線
@@ -117,8 +156,13 @@
   width: calc(100% * 400 / 850);
   left: 10px;
   top: calc(100% * 45 / 170);
-  border-top: 4px dotted #E39FB4;
   z-index: 2;
+}
+.idol-style .dotline {
+  border-top: 4px dotted #E39FB4;
+}
+.p-style .dotline {
+  border-top: 4px dotted #8DAFD2;
 }
 
 // 枠の外形を整えるための飾り
@@ -131,6 +175,12 @@
   border-radius: calc(100% * 10 / 60) calc(100% * 10 / 50);
   transform:skewX(37deg);
   background: #FDEFEF;
+}
+.idol-style .frame-decoration {
+  background: #FDEFEF;
+}
+.p-style .frame-decoration {
+  background: #E0EBF3;
 }
 
 // 矢印の横線
