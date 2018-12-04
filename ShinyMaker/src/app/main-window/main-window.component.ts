@@ -39,11 +39,14 @@ export class MainWindowComponent implements OnInit {
   ]
 
   /**
+   * 発言情報
+   */
+  talkData: {'name': string, 'text': string}[] = [];
+
+  /**
    * キャラ名
    */
   name = '恋鐘';
-
-  selectedIdol_ = '恋鐘';
 
   /**
    * 発言
@@ -78,15 +81,26 @@ export class MainWindowComponent implements OnInit {
     div.parentNode.insertBefore(script, div.nextSibling);
   }
 
+  /**
+   * 現在選択しているキャラ名
+   */
+  selectedIdol_ = '恋鐘';
   get selectedIdol(): string {
     return this.selectedIdol_;
   }
-
   set selectedIdol(value: string) {
     this.selectedIdol_ = value;
     if (this.selectedIdol_ != '') {
       this.name = this.selectedIdol_;
     }
     console.log(this.selectedIdol_);
+  }
+
+  /**
+   * 会話を追加する
+   */
+  addTalk() {
+    this.talkData.push({'name': this.name, 'text': this.message});
+    console.log(this.talkData);
   }
 }
