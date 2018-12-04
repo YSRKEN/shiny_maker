@@ -14,7 +14,11 @@
   <form class="col-xs-12 col-sm-10 col-md-8 my-3 mx-auto border py-3">
     <div class="form-group">
       <label for="name">キャラ名</label>
-      <input type="text" class="form-control" id="name" name="name" placeholder="キャラ名" [(ngModel)]="name">
+      <select class="form-control" id="exampleFormControlSelect1" name="name" [(ngModel)]="selectedIdol">
+        <option *ngFor="let idol of idolNameList" [value]="idol.key">{{idol.name}}</option>
+      </select>
+      <input type="text" class="form-control mt-3" id="name" name="name" placeholder="「その他」選択時に名前を入力" [(ngModel)]="name"
+        [ngClass]="{'d-none' : selectedIdol != 'その他'}">
     </div>
     <div class="form-group">
       <label for="message">発言</label>
