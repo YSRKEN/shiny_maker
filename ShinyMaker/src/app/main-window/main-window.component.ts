@@ -93,7 +93,6 @@ export class MainWindowComponent implements OnInit {
     if (this.selectedIdol_ != '') {
       this.name = this.selectedIdol_;
     }
-    console.log(this.selectedIdol_);
   }
 
   /**
@@ -101,6 +100,5 @@ export class MainWindowComponent implements OnInit {
    */
   addTalk() {
     this.talkData.push({'name': this.name, 'text': this.message});
-    console.log(this.talkData);
   }
 }
