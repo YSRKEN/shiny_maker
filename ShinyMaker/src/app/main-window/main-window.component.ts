@@ -84,7 +84,7 @@ export class MainWindowComponent implements OnInit {
 
   set selectedIdol(value: string) {
     this.selectedIdol_ = value;
-    if (this.selectedIdol_ != 'その他') {
+    if (this.selectedIdol_ != '') {
       this.name = this.selectedIdol_;
     }
     console.log(this.selectedIdol_);
