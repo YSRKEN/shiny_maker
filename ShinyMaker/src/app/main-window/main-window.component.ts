@@ -103,6 +103,53 @@ export class MainWindowComponent implements OnInit {
   }
 
   /**
+   * 会話を更新する
+   */
+  updateTalk(){
+    const index = this.selectedTalkIndex;
+    if (index >= 0) {
+      this.talkData[index].name = this.name;
+      this.talkData[index].text = this.message;
+    }
+  }
+
+  /**
+   * 会話を上に上げる
+   */
+  upTalk() {
+    const index = this.selectedTalkIndex;
+    if (index<= 0) {
+      return;
+    }
+    const temp = this.talkData[index];
+    this.talkData[index] = this.talkData[index - 1];
+    this.talkData[index - 1] = temp;
+  }
+
+  /**
+   * 会話を下に下げる
+   */
+  downTalk() {
+    const index = this.selectedTalkIndex;
+    if (index < 0 || index >= this.talkData.length - 1) {
+      return;
+    }
+    const temp = this.talkData[index];
+    this.talkData[index] = this.talkData[index + 1];
+    this.talkData[index + 1] = temp;
+  }
+
+  /**
+   * 会話を削除する
+   */
+  deleteTalk() {
+    const index = this.selectedTalkIndex;
+    if (index >= 0) {
+      this.talkData.splice(index, 1);
+    }
+  }
+
+  /**
    * 会話を選択する
    * @param index 会話のインデックス
    */
@@ -146,5 +193,17 @@ export class MainWindowComponent implements OnInit {
       }
     }
     return false;
+  }
+
+  /**
+   * 選択された会話のインデックスを返す
+   */
+  get selectedTalkIndex(): number {
+    for(let i = 0; i < this.talkData.length; ++i){
+      if (this.talkData[i].selected) {
+        return i;
+      }
+    }
+    return -1;
   }
 }

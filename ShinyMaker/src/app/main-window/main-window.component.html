@@ -29,10 +29,10 @@
     <app-message-window id="preview-message" name={{name}} text={{message}}></app-message-window>
     <div class="d-flex mt-3">
       <button type="button" class="w-100 btn btn-primary mr-3 px-0" (click)="addTalk()">追加</button>
-      <button type="button" class="w-100 btn btn-primary mr-3 px-0" [ngClass]="{'d-none': !selectAnyTalk}">更新</button>
-      <button type="button" class="w-100 btn btn-primary mr-3 px-0" [ngClass]="{'d-none': !selectAnyTalk}">↑↑</button>
-      <button type="button" class="w-100 btn btn-primary mr-3 px-0" [ngClass]="{'d-none': !selectAnyTalk}">↓↓</button>
-      <button type="button" class="w-100 btn btn-primary mr-3 px-0" [ngClass]="{'d-none': !selectAnyTalk}">削除</button>
+      <button type="button" class="w-100 btn btn-primary mr-3 px-0" (click)="updateTalk()" [ngClass]="{'d-none': !selectAnyTalk}">更新</button>
+      <button type="button" class="w-100 btn btn-primary mr-3 px-0" (click)="upTalk()" [ngClass]="{'d-none': !selectAnyTalk}">↑↑</button>
+      <button type="button" class="w-100 btn btn-primary mr-3 px-0" (click)="downTalk()" [ngClass]="{'d-none': !selectAnyTalk}">↓↓</button>
+      <button type="button" class="w-100 btn btn-primary mr-3 px-0" (click)="deleteTalk()" [ngClass]="{'d-none': !selectAnyTalk}">削除</button>
     </div>
   </form>
 </div>
