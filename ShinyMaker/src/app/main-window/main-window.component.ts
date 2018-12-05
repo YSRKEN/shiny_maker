@@ -184,6 +184,38 @@ export class MainWindowComponent implements OnInit {
   }
 
   /**
+   * 会話画像を保存(HTML2Canvasを使用)
+   */
+  saveTalk() {
+    if (this.talkData.length == 0) {
+      return;
+    }
+
+  }
+
+  /**
+   * サンプル会話で初期化
+   */
+  initialTalk() {
+    this.talkData = [];
+    this.talkData.push({'name': '真乃', 'text': '「普通の系譜」にしては珍しいほんわか枠。\nおっとりとした性格の中にカイデーを隠し持つ。\n鳩を飼っているが食用ではないので注意。', 'selected': false});
+    this.talkData.push({'name': '灯織', 'text': '「蒼の系譜」だがファッションセンスも備えている。\nその割に占いを信じやすい茶目っ気を持つ。\n髪型などから「美城常務の娘」説まであるとか。', 'selected': false});
+    this.talkData.push({'name': 'めぐる', 'text': '「個性の系譜」らしく髪の毛が黄色い。\n"ちゃんみお"を彷彿とさせるコミュ強が特徴。\nそれと……ふふっ、アメリカ人なんてどうだ？', 'selected': false});
+    this.talkData.push({'name': 'プロデューサー', 'text': 'ちひろと美咲ちゃの手を逃れたプロデューサーを\n待っていたのは、またアイドル事務所だった。\n次回『担当』。来週も地獄のレッスンに付き合ってもらう。', 'selected': false});
+    this.talkData.push({'name': 'はづき', 'text': '「事務員の系譜」の中でもマルチな才能を持つ。\nボイトレからメイクまでをこなせるのは圧巻の一言。\nその能力の代償として、一日の大半を寝て過ごすことに。', 'selected': false});
+    this.talkData.push({'name': '社長', 'text': '「社長の系譜」に違わずアイコンが黒塗りである。\n名前が「あまい」なのに「私は甘くはないぞ」が口癖らしい。\nＣＶが完全に海馬社長なのが面白いと思いました……。', 'selected': false});
+  }
+
+  /**
+   * 全会話を削除
+   */
+  allDeleteTalk() {
+    if (window.confirm('会話を全て削除します。よろしいですか？')) {
+      this.talkData = [];
+    }
+  }
+
+  /**
    * いずれかの会話が選択されていたらtrue
    */
   get selectAnyTalk(): boolean {
