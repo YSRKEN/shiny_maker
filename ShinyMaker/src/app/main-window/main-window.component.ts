@@ -41,7 +41,7 @@ export class MainWindowComponent implements OnInit {
   /**
    * 発言情報
    */
-  talkData: {'name': string, 'text': string}[] = [];
+  talkData: {'name': string, 'text': string, 'selected': boolean }[] = [];
 
   /**
    * キャラ名
@@ -99,6 +99,34 @@ export class MainWindowComponent implements OnInit {
    * 会話を追加する
    */
   addTalk() {
-    this.talkData.push({'name': this.name, 'text': this.message});
+    this.talkData.push({'name': this.name, 'text': this.message, 'selected': false });
+  }
+
+  /**
+   * 会話を選択する
+   * @param index 会話のインデックス
+   */
+  clickTalk(index: number){
+    for(let i = 0; i < this.talkData.length; ++i){
+      if (i == index) {
+        // クリックしたインデックスの要素については選択を反転させる
+        this.talkData[i].selected = !this.talkData[i].selected;
+      } else {
+        // クリックした以外のインデックスの要素は一律に選択を解除する
+        this.talkData[i].selected = false;
+      }
+    }
+  }
+
+  /**
+   * いずれかの会話が選択されていたらtrue
+   */
+  get selectAnyTalk(): boolean {
+    for(let i = 0; i < this.talkData.length; ++i){
+      if (this.talkData[i].selected) {
+        return true;
+      }
+    }
+    return false;
   }
 }

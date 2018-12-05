@@ -29,16 +29,17 @@
     <app-message-window id="preview-message" name={{name}} text={{message}}></app-message-window>
     <div class="d-flex mt-3">
       <button type="button" class="w-100 btn btn-primary mr-3 px-0" (click)="addTalk()">追加</button>
-      <button type="button" class="w-100 btn btn-primary mr-3 px-0" [ngClass]="{'d-none': true}">更新</button>
-      <button type="button" class="w-100 btn btn-primary mr-3 px-0" [ngClass]="{'d-none': true}">↑↑</button>
-      <button type="button" class="w-100 btn btn-primary mr-3 px-0" [ngClass]="{'d-none': true}">↓↓</button>
-      <button type="button" class="w-100 btn btn-primary mr-3 px-0" [ngClass]="{'d-none': true}">削除</button>
+      <button type="button" class="w-100 btn btn-primary mr-3 px-0" [ngClass]="{'d-none': !selectAnyTalk}">更新</button>
+      <button type="button" class="w-100 btn btn-primary mr-3 px-0" [ngClass]="{'d-none': !selectAnyTalk}">↑↑</button>
+      <button type="button" class="w-100 btn btn-primary mr-3 px-0" [ngClass]="{'d-none': !selectAnyTalk}">↓↓</button>
+      <button type="button" class="w-100 btn btn-primary mr-3 px-0" [ngClass]="{'d-none': !selectAnyTalk}">削除</button>
     </div>
   </form>
 </div>
 <div class="container">
   <form class="col-xs-12 col-sm-10 col-md-8 my-3 mx-auto border py-3">
-    <div class="my-3" *ngFor="let talk of talkData">
+    <div class="my-3 p-3" *ngFor="let talk of talkData; index as i" [ngClass]="{'selected': talk.selected}"
+      (click)="clickTalk(i)">
       <app-message-window name={{talk.name}} text={{talk.text}}></app-message-window>
     </div>
   </form>
