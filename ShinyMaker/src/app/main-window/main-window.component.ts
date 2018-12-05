@@ -111,6 +111,24 @@ export class MainWindowComponent implements OnInit {
       if (i == index) {
         // クリックしたインデックスの要素については選択を反転させる
         this.talkData[i].selected = !this.talkData[i].selected;
+
+        // その結果、選択状態になった場合、入力欄の内容を修正する
+        if (this.talkData[i].selected) {
+          // 発言はそのままコピーでいい
+          this.message = this.talkData[i].text;
+
+          // キャラ名については、セレクトボックスの方も修正を掛ける
+          if (this.idolNameList.filter(pair => pair.key == this.talkData[i].name).length > 0) {
+            this.selectedIdol = this.talkData[i].name;
+          }else {
+            this.selectedIdol = '';
+            //意味不明なことに、ここのコメントを外すと、
+            //キャラ名が「その他(自分で入力できるやつ)」なものを選択した際、
+            //[(ngModel)]="selectedIdol"なセレクトボックスの選択が空になる。
+            //関係ないセレクトボックスの選択に影響してんじゃねーよボケが！
+            // this.name = this.talkData[i].name;
+          }
+        }
       } else {
         // クリックした以外のインデックスの要素は一律に選択を解除する
         this.talkData[i].selected = false;
