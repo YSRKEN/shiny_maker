@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://shiny-maker.firebaseapp.com/sitemap.xml
