@@ -2,60 +2,33 @@
 .overall {
   position:relative;
 }
-
-// 名前欄(380x40)
-.message-name-area {
-  position: absolute;
-  width: calc(100% * 380 / 850);
-  height: calc(100% * 40 / 170);
-  left: 0;
-  top: 0;
-  border-top-left-radius: calc(100% * 10 / 380) calc(100% * 10 / 40);
+.idol-style {
+  background-image: url("/assets/idol-style.png");
+  background-repeat: no-repeat;
+  background-size: contain;
 }
-.idol-style .message-name-area {
-  background: #FDEFEF;
+.p-style {
+  background-image: url("/assets/p-style.png");
+  background-repeat: no-repeat;
+  background-size: contain;
 }
-.p-style .message-name-area {
-  background: #E0EBF3;
+.haduki-style {
+  background-image: url("/assets/haduki-style.png");
+  background-repeat: no-repeat;
+  background-size: contain;
 }
-.haduki-style .message-name-area {
-  background: #EBF4E1;
-}
-.other-style .message-name-area {
-  background: #EDEDED;
-}
-
-// テキスト欄(850x130)
-.message-text-area {
-  position: absolute;
-  width: 100%;
-  height: calc(100% * 130 / 170);
-  left: 0;
-  top: calc(100% * 40 / 170);
-  border-top-right-radius: calc(100% * 10 / 850) calc(100% * 10 / 130);
-  border-bottom-right-radius: calc(100% * 10 / 850) calc(100% * 10 / 130);
-  border-bottom-left-radius: calc(100% * 10 / 850) calc(100% * 10 / 130);
-  z-index: 1;
-}
-.idol-style .message-text-area {
-  background: #FDEFEF;
-}
-.p-style .message-text-area {
-  background: #E0EBF3;
-}
-.haduki-style .message-text-area {
-  background: #EBF4E1;
-}
-.other-style .message-text-area {
-  background: #EDEDED;
+.other-style {
+  background-image: url("/assets/other-style.png");
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 // 名前
 .message-name-style {
   position: absolute;
   font-family: 'Kosugi Maru', sans-serif;
-  left: calc(100% * 50 / 380);
-  top: calc(100% * 8 / 40);
+  left: calc(100% * 50 / 850);
+  top: calc(100% * 8 / 170);
   line-height: 1.0 !important;
 }
 
@@ -64,220 +37,6 @@
   position: absolute;
   font-family: 'Kosugi Maru', sans-serif;
   left: calc(100% * 40 / 850);
-  top: calc(100% * 20 / 130);
+  top: calc(100% * 60 / 170);
   line-height: calc(100% * 34 / 24);
-}
-
-// 大きい方の星を造形するための外枠
-.star-box-large {
-  position: absolute;
-  width: calc(100% * 30 / 380);
-  height: calc(100% * 30 / 40);
-  left: calc(100% * 15 / 380);
-  top: calc(100% * 10 / 40);
-}
-.idol-style .star-box-large {
-  background: #E49FB4;
-}
-.p-style .star-box-large {
-  background: #8DAFD2;
-}
-.haduki-style .star-box-large {
-  background: #B0C59C;
-}
-.other-style .star-box-large {
-  background: #AEAEAE;
-}
-
-// 小さい方の星を造形するための外枠
-.star-box-small {
-  position: absolute;
-  width: calc(100% * 12 / 380);
-  height: calc(100% * 12 / 40);
-  left: calc(100% * 33 / 380);
-  top: calc(100% * 30 / 40);
-}
-.idol-style .star-box-small {
-  background: #E49FB4;
-}
-.p-style .star-box-small {
-  background: #8DAFD2;
-}
-.haduki-style .star-box-small {
-  background: #B0C59C;
-}
-.other-style .star-box-small {
-  background: #AEAEAE;
-}
-
-// 左上を塗りつぶすための細工
-.star-blocker-1 {
-  position: absolute;
-  width: 50%;
-  height: 50%;
-  left: 0;
-  top: 0;
-  border-radius: 0 0 100% 0;
-}
-.idol-style .star-blocker-1 {
-  background: #FDEFEF;
-}
-.p-style .star-blocker-1 {
-  background: #E0EBF3;
-}
-.haduki-style .star-blocker-1 {
-  background: #EBF4E1;
-}
-.other-style .star-blocker-1 {
-  background: #EDEDED;
-}
-
-// 右上を塗りつぶすための細工
-.star-blocker-2 {
-  position: absolute;
-  width: 50%;
-  height: 50%;
-  left: 50%;
-  top: 0;
-  border-radius: 0 0 0 100%;
-}
-.idol-style .star-blocker-2 {
-  background: #FDEFEF;
-}
-.p-style .star-blocker-2 {
-  background: #E0EBF3;
-}
-.haduki-style .star-blocker-2 {
-  background: #EBF4E1;
-}
-.other-style .star-blocker-2 {
-  background: #EDEDED;
-}
-
-// 右下を塗りつぶすための細工
-.star-blocker-3 {
-  position: absolute;
-  width: 50%;
-  height: 50%;
-  left: 50%;
-  top: 50%;
-  border-radius: 100% 0 0 0;
-}
-.idol-style .star-blocker-3 {
-  background: #FDEFEF;
-}
-.p-style .star-blocker-3 {
-  background: #E0EBF3;
-}
-.haduki-style .star-blocker-3 {
-  background: #EBF4E1;
-}
-.other-style .star-blocker-3 {
-  background: #EDEDED;
-}
-
-// 左下を塗りつぶすための細工
-.star-blocker-4 {
-  position: absolute;
-  width: 50%;
-  height: 50%;
-  left: 0;
-  top: 50%;
-  border-radius: 0 100% 0 0;
-}
-.idol-style .star-blocker-4 {
-  background: #FDEFEF;
-}
-.p-style .star-blocker-4 {
-  background: #E0EBF3;
-}
-.haduki-style .star-blocker-4 {
-  background: #EBF4E1;
-}
-.other-style .star-blocker-4 {
-  background: #EDEDED;
-}
-
-// 罫線
-.dotline {
-  position: absolute;
-  width: calc(100% * 400 / 850);
-  left: 10px;
-  top: calc(100% * 45 / 170);
-  z-index: 2;
-}
-.idol-style .dotline {
-  border-top: 4px dotted #E39FB4;
-}
-.p-style .dotline {
-  border-top: 4px dotted #8DAFD2;
-}
-.haduki-style .dotline {
-  border-top: 4px dotted #B5C4A3;
-}
-.other-style .dotline {
-  border-top: 4px dotted #A4A4A4;
-}
-
-// 枠の外形を整えるための飾り
-.frame-decoration{
-  position: absolute;
-  width: calc(100% * 60 / 850);
-  height: calc(100% * 50 / 170);
-  top: 0;
-  left: calc(100% * 350 / 850);
-  border-radius: calc(100% * 10 / 60) calc(100% * 10 / 50);
-  transform:skewX(37deg);
-}
-.idol-style .frame-decoration {
-  background: #FDEFEF;
-}
-.p-style .frame-decoration {
-  background: #E0EBF3;
-}
-.haduki-style .frame-decoration {
-  background: #EBF4E1;
-}
-.other-style .frame-decoration {
-  background: #EDEDED;
-}
-
-// 矢印の横線
-.arrow-line-1{
-  position: absolute;
-  width: calc(100% * 20 / 850);
-  height: calc(100% * 6 / 170);
-  left: calc(100% * 810 / 850);
-  top: calc(100% * 145 / 170);
-  //border-radius: calc(100% * 3 / 20) calc(100% * 3 / 6);
-  border-radius: 3px;
-  background: #605462;
-  z-index: 2;
-}
-
-// 矢印の縦線
-.arrow-line-2{
-  position: absolute;
-  width: calc(100% * 6 / 850);
-  height: calc(100% * 20 / 170);
-  left: calc(100% * 824 / 850);
-  top: calc(100% * 130 / 170);
-  //border-radius: calc(100% * 3 / 6) calc(100% * 3 / 20);
-  border-radius: 3px;
-  background: #605462;
-  z-index: 2;
-}
-
-// 矢印の斜め線
-.arrow-line-3{
-  position: absolute;
-  width: calc(100% * 6 / 850);
-  height: calc(100% * 22 / 170);
-  left: calc(100% * 817 / 850);
-  top: calc(100% * 130 / 170);
-  transform: rotate(-45deg);
-  //border-radius: calc(100% * 3 / 6) calc(100% * 3 / 22);
-  border-radius: 3px;
-  background: #605462;
-  z-index: 2;
 }
