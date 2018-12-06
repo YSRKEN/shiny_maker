@@ -47,16 +47,37 @@ export class MainWindowComponent implements OnInit {
   /**
    * キャラ名
    */
-  name = '恋鐘';
+  name_ = '真乃';
+  get name(): string {
+    return this.name_;
+  }
+  set name(value: string) {
+    this.name_ = value;
+    window.localStorage.setItem('name', this.name_);
+  }
 
   /**
    * 発言
    */
-  message = '問題なかよ！\nヤサイマシマシやけん！';
+  message_ = 'はい、鳩さんとは仲良しで、\nつい時間を忘れて遊んでしまうんです';
+  get message(): string {
+    return this.message_;
+  }
+  set message(value: string) {
+    this.message_ = value;
+    window.localStorage.setItem('message', this.message_);
+  }
 
   constructor() { }
 
   ngOnInit() {
+    if (window.localStorage.getItem('name') != null) {
+      this.name = window.localStorage.getItem('name');
+    }
+    if (window.localStorage.getItem('message') != null) {
+      this.message = window.localStorage.getItem('message');
+    }
+    this.loadTalkFromLocalStrage();
   }
 
   /**
@@ -85,7 +106,7 @@ export class MainWindowComponent implements OnInit {
   /**
    * 現在選択しているキャラ名
    */
-  selectedIdol_ = '恋鐘';
+  selectedIdol_ = '真乃';
   get selectedIdol(): string {
     return this.selectedIdol_;
   }
@@ -101,6 +122,7 @@ export class MainWindowComponent implements OnInit {
    */
   addTalk() {
     this.talkData.push({'name': this.name, 'text': this.message, 'selected': false });
+    this.saveTalkToLocalStrage();
   }
 
   /**
@@ -111,6 +133,7 @@ export class MainWindowComponent implements OnInit {
     if (index >= 0) {
       this.talkData[index].name = this.name;
       this.talkData[index].text = this.message;
+      this.saveTalkToLocalStrage();
     }
   }
 
@@ -125,6 +148,7 @@ export class MainWindowComponent implements OnInit {
     const temp = this.talkData[index];
     this.talkData[index] = this.talkData[index - 1];
     this.talkData[index - 1] = temp;
+    this.saveTalkToLocalStrage();
   }
 
   /**
@@ -138,6 +162,7 @@ export class MainWindowComponent implements OnInit {
     const temp = this.talkData[index];
     this.talkData[index] = this.talkData[index + 1];
     this.talkData[index + 1] = temp;
+    this.saveTalkToLocalStrage();
   }
 
   /**
@@ -147,6 +172,7 @@ export class MainWindowComponent implements OnInit {
     const index = this.selectedTalkIndex;
     if (index >= 0) {
       this.talkData.splice(index, 1);
+      this.saveTalkToLocalStrage();
     }
   }
 
@@ -182,6 +208,7 @@ export class MainWindowComponent implements OnInit {
         this.talkData[i].selected = false;
       }
     }
+    this.saveTalkToLocalStrage();
   }
 
   /**
@@ -252,6 +279,7 @@ export class MainWindowComponent implements OnInit {
     this.talkData.push({'name': 'プロデューサー', 'text': 'ちひろと美咲ちゃの手を逃れたプロデューサーを\n待っていたのは、またアイドル事務所だった。\n次回『担当』。来週も地獄のレッスンに付き合ってもらう。', 'selected': false});
     this.talkData.push({'name': 'はづき', 'text': '「事務員の系譜」の中でもマルチな才能を持つ。\nボイトレからメイクまでをこなせるのは圧巻の一言。\nその能力の代償として、一日の大半を寝て過ごすことに。', 'selected': false});
     this.talkData.push({'name': '社長', 'text': '「社長の系譜」に違わずアイコンが黒塗りである。\n名前が「あまい」なのに「私は甘くはないぞ」が口癖らしい。\nＣＶが完全に海馬社長なのが面白いと思いました……。', 'selected': false});
+    this.saveTalkToLocalStrage();
   }
 
   /**
@@ -260,6 +288,23 @@ export class MainWindowComponent implements OnInit {
   allDeleteTalk() {
     if (window.confirm('会話を全て削除します。よろしいですか？')) {
       this.talkData = [];
+      this.saveTalkToLocalStrage();
+    }
+  }
+
+  /**
+   * 会話内容を保存
+   */
+  saveTalkToLocalStrage() {
+    window.localStorage.setItem('talkData', JSON.stringify(this.talkData));
+  }
+
+  /**
+   * 会話内容を復元
+   */
+  loadTalkFromLocalStrage() {
+    if (window.localStorage.getItem('talkData') != null) {
+      this.talkData = JSON.parse(window.localStorage.getItem('talkData'));
     }
   }
 
