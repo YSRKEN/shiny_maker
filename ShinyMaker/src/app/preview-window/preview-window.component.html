@@ -1,0 +1,12 @@
+<div class="container">
+  <form class="my-3 py-3 bg-white">
+    <div id="capture" style="width: 900px;" class="p-3">
+      <div *ngFor="let talk of talkData; index as i" [ngClass]="messageClassPlus(i)">
+        <app-message-window name={{talk.name}} text={{talk.text}}></app-message-window>
+      </div>
+    </div>
+    <div class="d-flex m-3">
+      <button type="button" style="width: 850px;" class="btn btn-primary" (click)="saveTalk()">保存</button>
+    </div>
+  </form>
+</div>

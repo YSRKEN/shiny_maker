@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import html2canvas from 'html2canvas';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-window',
@@ -68,7 +69,7 @@ export class MainWindowComponent implements OnInit {
     window.localStorage.setItem('message', this.message_);
   }
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     if (window.localStorage.getItem('name') != null) {
@@ -309,6 +310,13 @@ export class MainWindowComponent implements OnInit {
     if (window.localStorage.getItem('talkData') != null) {
       this.talkData = JSON.parse(window.localStorage.getItem('talkData'));
     }
+  }
+
+  /**
+   * 別の画面に遷移し、そちらで大きくプレビューさせる
+   */
+  async openPreviewWindow() {
+    await this.router.navigate(['/preview']);
   }
 
   /**

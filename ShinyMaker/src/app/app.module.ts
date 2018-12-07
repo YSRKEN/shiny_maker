@@ -9,12 +9,14 @@ import { environment } from '../environments/environment';
 import { RouterModule } from '@angular/router';
 import { MessageWindowComponent } from './message-window/message-window.component';
 import { MainWindowComponent } from './main-window/main-window.component';
+import { PreviewWindowComponent } from './preview-window/preview-window.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MessageWindowComponent,
-    MainWindowComponent
+    MainWindowComponent,
+    PreviewWindowComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
