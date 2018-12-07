@@ -37,7 +37,7 @@
   </form>
 </div>
 <div class="container">
-  <form class="col-xs-12 col-sm-10 col-md-8 my-3 mx-auto border py-3">
+  <form class="col-xs-12 col-sm-10 col-md-8 my-3 mx-auto border py-3 bg-white">
     <div id="capture">
       <div class="p-2" *ngFor="let talk of talkData; index as i" [ngClass]="{'selected': talk.selected}"
       (click)="clickTalk(i)">

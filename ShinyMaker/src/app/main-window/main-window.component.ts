@@ -222,6 +222,7 @@ export class MainWindowComponent implements OnInit {
       allowTaint: true,
       useCORS: true,
       proxy: true,
+      scale: 2,
       onrendered: function (canvas) {
         canvas.toDataURL();
       }
@@ -234,6 +235,8 @@ export class MainWindowComponent implements OnInit {
 
       // ファイルの保存イベントを走らせる
       this.saveBlob(blob, "shiny_maker.png");
+    }).catch((error) => {
+      window.alert('エラー：画像を保存できませんでした。');
     });
   }
 
