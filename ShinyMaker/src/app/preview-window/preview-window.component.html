@@ -1,6 +1,6 @@
 <div class="container">
-  <form class="my-3 py-3 bg-white">
-    <div id="capture" style="width: 900px;" class="p-3">
+  <form class="my-3 py-3">
+    <div id="capture" style="width: 900px;" class="p-3 bg-white">
       <div *ngFor="let talk of talkData; index as i" [ngClass]="messageClassPlus(i)">
         <app-message-window name={{talk.name}} text={{talk.text}}></app-message-window>
       </div>
