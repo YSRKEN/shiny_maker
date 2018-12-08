@@ -224,6 +224,7 @@ export class MainWindowComponent implements OnInit {
       useCORS: true,
       proxy: true,
       scale: 2,
+      background :'#FFFFFF',
       onrendered: function (canvas) {
         canvas.toDataURL();
       }
