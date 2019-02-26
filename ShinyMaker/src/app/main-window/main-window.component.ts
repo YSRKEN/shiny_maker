@@ -90,7 +90,7 @@ export class MainWindowComponent implements OnInit {
     element.setAttribute('class', "twitter-share-button");
     element.setAttribute('data-size', "large");
     element.setAttribute('data-text', "");
-    element.setAttribute('data-url', "https://shiny_maker.firebaseapp.com");
+    element.setAttribute('data-url', "https://shiny-maker.firebaseapp.com");
     element.setAttribute('data-hashtags', this.title);
     element.setAttribute('data-show-count', "false");
 
