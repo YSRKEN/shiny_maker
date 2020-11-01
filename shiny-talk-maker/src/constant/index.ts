@@ -29,3 +29,5 @@ export const CHARACTER_LIST: Character[] = [
   { shortName: '社長', fullName: '天井社長', type: 'other' },
   { shortName: '', fullName: 'その他', type: 'other' },
 ];
+
+export type ActionType = 'addMessage';

@@ -1,20 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 
 import ApplicationInfo from 'component/ApplicationInfo';
 import InputForm from 'component/InputForm';
 import MessageView from 'component/MessageView';
 import Title from 'component/Title';
-import { Message } from 'model/Message';
+import { ApplicationContext } from 'setvice/store';
 
 // メイン画面
 const MainView: React.FC = () => {
-  const [messageList, setMessageList] = useState<Message[]>([]);
-
-  // メッセージを追加する
-  const addMessage = (message: Message) => {
-    setMessageList([...messageList, {...message}]);
-  };
+  const { messageList } = useContext(ApplicationContext);
 
   return (
     <Container>
@@ -30,7 +25,7 @@ const MainView: React.FC = () => {
       </Row>
       <Row className="my-3">
         <Col>
-          <InputForm addMessage={addMessage} />
+          <InputForm />
         </Col>
       </Row>
       {messageList.length > 0 &&

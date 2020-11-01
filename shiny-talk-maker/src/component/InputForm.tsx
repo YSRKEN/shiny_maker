@@ -1,15 +1,16 @@
-import React, { FormEvent, useEffect, useState } from 'react';
+import React, { FormEvent, useContext, useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 
 import Preview from 'component/Preview';
 import { CHARACTER_LIST } from 'constant';
 import { Message } from 'model/Message';
 import { findCharacterByFullName } from 'setvice/utility';
+import { ApplicationContext } from 'setvice/store';
 
 // メッセージ一覧
-const InputForm: React.FC<{
-  addMessage: (message: Message) => void
-}> = ({addMessage}) => {
+const InputForm: React.FC = () => {
+  const { dispatch } = useContext(ApplicationContext);
+
   const [characterName, setCharacterName] = useState('櫻木真乃');
   const [otherName, setOtherName] = useState('観客');
   const [talk, setTalk] = useState('はい、鳩さんとは仲良しで、\nつい時間を忘れて遊んでしまうんです');
@@ -30,7 +31,7 @@ const InputForm: React.FC<{
   const onChangeCharacterName = (e: FormEvent<any>) => setCharacterName(e.currentTarget.value);
   const onChangeOtherName = (e: FormEvent<any>) => setOtherName(e.currentTarget.value);
   const onChangeTalk = (e: FormEvent<any>) => setTalk(e.currentTarget.value);
-  const onClickAddMessageButton = () => addMessage(message);
+  const onClickAddMessageButton = () => dispatch({type: 'addMessage', message: JSON.stringify(message)});
 
   return   <Form className="border px-3 pt-3">
   <Form.Group>
