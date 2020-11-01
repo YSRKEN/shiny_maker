@@ -1,7 +1,7 @@
 import React, { FormEvent, useState } from 'react';
 import { Col, Container, Form, Row, Button } from 'react-bootstrap';
 
-// アイドル名一覧
+// キャラ一覧
 interface Character {
   shortName: string;
   fullName: string;
@@ -37,17 +37,29 @@ const CHARACTER_LIST: Character[] = [
   { shortName: '', fullName: 'その他', type: 'other' },
 ];
 
+// 名称からキャラを検索する
+const findCharacterByName = (name: string) => {
+  return CHARACTER_LIST.filter(c => c.fullName === name)[0];
+};
+
 // 仮実装
 const Preview: React.FC = () => <div className="border w-100" style={{ height: 100 }}></div>;
 
 const App: React.FC = () => {
-  const [name, setName] = useState('櫻木真乃');
+  const [characterName, setCharacterName] = useState('櫻木真乃');
+  const [otherName, setOtherName] = useState('観客');
   const [talk, setTalk] = useState('はい、鳩さんとは仲良しで、\nつい時間を忘れて遊んでしまうんです');
 
-  const onChangeName = (e: FormEvent<any>) => setName(e.currentTarget.value);
+  const onChangeCharacterName = (e: FormEvent<any>) => setCharacterName(e.currentTarget.value);
+  const onChangeOtherName = (e: FormEvent<any>) => setOtherName(e.currentTarget.value);
   const onChangeTalk = (e: FormEvent<any>) => setTalk(e.currentTarget.value);
   const addMessage = () => {
-    alert(`${name}「${talk}」`);
+    const character = findCharacterByName(characterName);
+    if (character.type !== 'other') {
+      alert(`${character.shortName}「${talk}」`);
+    } else {
+      alert(`${otherName}「${talk}」`);
+    }
   };
 
   return (
@@ -69,9 +81,10 @@ const App: React.FC = () => {
           <Form className="border px-3 pt-3">
             <Form.Group>
               <Form.Label>キャラ名</Form.Label>
-              <Form.Control as="select" value={name} onChange={onChangeName}>
+              <Form.Control as="select" value={characterName} onChange={onChangeCharacterName}>
                 {CHARACTER_LIST.map(character => <option key={character.fullName}>{character.fullName}</option>)}
               </Form.Control>
+              {findCharacterByName(characterName).type === 'other' && <Form.Control className="mt-3" value={otherName} onChange={onChangeOtherName} />}
             </Form.Group>
             <Form.Group>
               <Form.Label>発言</Form.Label>
