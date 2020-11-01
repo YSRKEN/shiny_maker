@@ -1,11 +1,12 @@
-import React, { FormEvent, useState } from 'react';
+import React, { FormEvent, useEffect, useState } from 'react';
 import { Col, Container, Form, Row, Button } from 'react-bootstrap';
 
 // キャラ一覧
+type CharacterType = 'idol' | 'producer' | 'assistant' | 'other';
 interface Character {
   shortName: string;
   fullName: string;
-  type: 'idol' | 'producer' | 'assistant' | 'other';
+  type: CharacterType;
 }
 const CHARACTER_LIST: Character[] = [
   { shortName: '真乃', fullName: '櫻木真乃', type: 'idol' },
@@ -37,29 +38,60 @@ const CHARACTER_LIST: Character[] = [
   { shortName: '', fullName: 'その他', type: 'other' },
 ];
 
+// メッセージ用の型
+interface Message {
+  name: string;
+  talk: string;
+  type: CharacterType;
+}
+
 // 名称からキャラを検索する
-const findCharacterByName = (name: string) => {
-  return CHARACTER_LIST.filter(c => c.fullName === name)[0];
+const findCharacterByFullName = (fullName: string) => {
+  return CHARACTER_LIST.filter(c => c.fullName === fullName)[0];
 };
 
-// 仮実装
-const Preview: React.FC = () => <div className="border w-100" style={{ height: 100 }}></div>;
+// メッセージ一覧
+const MessageView: React.FC<{messageList: Message[]}> = ({messageList}) => {
+  return <>
+    {messageList.map(message => <div className="m-3 p-1 border">
+      <span>{message.name}</span><br />
+      <pre>{message.talk}</pre>
+    </div>)
+    }
+  </>;
+};
 
+// プレビュー表示
+const Preview: React.FC<{message: Message}> = ({message}) => {
+  return <div className="border w-100">
+    <MessageView messageList={[message]} />
+  </div>;
+};
+
+// メイン画面
 const App: React.FC = () => {
   const [characterName, setCharacterName] = useState('櫻木真乃');
   const [otherName, setOtherName] = useState('観客');
   const [talk, setTalk] = useState('はい、鳩さんとは仲良しで、\nつい時間を忘れて遊んでしまうんです');
+  const [message, setMessage] = useState<Message>({
+    name: '真乃', talk: 'はい、鳩さんとは仲良しで、\nつい時間を忘れて遊んでしまうんです', type: 'idol'
+  });
+
+  // 入力フォームの内容が変更された際、入力されることになるメッセージの内容を更新する
+  useEffect(() => {
+    const character = findCharacterByFullName(characterName);
+    if (character.type !== 'other') {
+      setMessage({name: character.shortName, talk, type: character.type});
+    } else {
+      setMessage({name: otherName, talk, type: character.type});
+    }
+  }, [characterName, otherName, talk]);
 
   const onChangeCharacterName = (e: FormEvent<any>) => setCharacterName(e.currentTarget.value);
   const onChangeOtherName = (e: FormEvent<any>) => setOtherName(e.currentTarget.value);
   const onChangeTalk = (e: FormEvent<any>) => setTalk(e.currentTarget.value);
   const addMessage = () => {
-    const character = findCharacterByName(characterName);
-    if (character.type !== 'other') {
-      alert(`${character.shortName}「${talk}」`);
-    } else {
-      alert(`${otherName}「${talk}」`);
-    }
+    alert(`${message.name}「${message.talk}」`);
   };
 
   return (
@@ -84,7 +116,7 @@ const App: React.FC = () => {
               <Form.Control as="select" value={characterName} onChange={onChangeCharacterName}>
                 {CHARACTER_LIST.map(character => <option key={character.fullName}>{character.fullName}</option>)}
               </Form.Control>
-              {findCharacterByName(characterName).type === 'other' && <Form.Control className="mt-3" value={otherName} onChange={onChangeOtherName} />}
+              {findCharacterByFullName(characterName).type === 'other' && <Form.Control className="mt-3" value={otherName} onChange={onChangeOtherName} />}
             </Form.Group>
             <Form.Group>
               <Form.Label>発言</Form.Label>
@@ -93,7 +125,7 @@ const App: React.FC = () => {
             </Form.Group>
             <Form.Group>
               <Form.Label>プレビュー</Form.Label>
-              <Preview />
+              <Preview message={message} />
             </Form.Group>
             <Form.Group>
               <Button className="w-100" onClick={addMessage}>追加</Button>
