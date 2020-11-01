@@ -1,5 +1,5 @@
-import React from 'react';
-import { Col, Container, Form, Row, Button} from 'react-bootstrap';
+import React, { FormEvent, useState } from 'react';
+import { Col, Container, Form, Row, Button } from 'react-bootstrap';
 
 // アイドル名一覧
 interface Character {
@@ -38,9 +38,19 @@ const CHARACTER_LIST: Character[] = [
 ];
 
 // 仮実装
-const Preview: React.FC = () => <div className="border w-100" style={{height: 100}}></div>;
+const Preview: React.FC = () => <div className="border w-100" style={{ height: 100 }}></div>;
 
-const App: React.FC = () => (
+const App: React.FC = () => {
+  const [name, setName] = useState('櫻木真乃');
+  const [talk, setTalk] = useState('はい、鳩さんとは仲良しで、\nつい時間を忘れて遊んでしまうんです');
+
+  const onChangeName = (e: FormEvent<any>) => setName(e.currentTarget.value);
+  const onChangeTalk = (e: FormEvent<any>) => setTalk(e.currentTarget.value);
+  const addMessage = () => {
+    alert(`${name}「${talk}」`);
+  };
+
+  return (
     <Container>
       <Row className="my-3">
         <Col className="text-center">
@@ -51,7 +61,7 @@ const App: React.FC = () => (
       <Row className="my-3">
         <Col className="text-center">
           <span>Ver.2.0.0　<a href="https://github.com/YSRKEN/shiny_maker" rel="noreferrer" target="_blank">GitHub</a>
-          　<a href="https://twitter.com/YSRKEN" rel="noreferrer" target="_blank">作者のTwitter</a></span>
+            <a href="https://twitter.com/YSRKEN" rel="noreferrer" target="_blank">作者のTwitter</a></span>
         </Col>
       </Row>
       <Row className="my-3">
@@ -59,13 +69,13 @@ const App: React.FC = () => (
           <Form className="border px-3 pt-3">
             <Form.Group>
               <Form.Label>キャラ名</Form.Label>
-              <Form.Control as="select">
+              <Form.Control as="select" value={name} onChange={onChangeName}>
                 {CHARACTER_LIST.map(character => <option key={character.fullName}>{character.fullName}</option>)}
               </Form.Control>
             </Form.Group>
             <Form.Group>
               <Form.Label>発言</Form.Label>
-              <Form.Control as="textarea" rows={3}>
+              <Form.Control as="textarea" rows={3} value={talk} onChange={onChangeTalk}>
               </Form.Control>
             </Form.Group>
             <Form.Group>
@@ -73,12 +83,13 @@ const App: React.FC = () => (
               <Preview />
             </Form.Group>
             <Form.Group>
-              <Button className="w-100">追加</Button>
+              <Button className="w-100" onClick={addMessage}>追加</Button>
             </Form.Group>
           </Form>
         </Col>
       </Row>
     </Container>
-);
+  );
+};
 
 export default App;
