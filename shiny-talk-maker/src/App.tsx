@@ -76,6 +76,7 @@ const App: React.FC = () => {
   const [message, setMessage] = useState<Message>({
     name: '真乃', talk: 'はい、鳩さんとは仲良しで、\nつい時間を忘れて遊んでしまうんです', type: 'idol'
   });
+  const [messageList, setMessageList] = useState<Message[]>([]);
 
   // 入力フォームの内容が変更された際、入力されることになるメッセージの内容を更新する
   useEffect(() => {
@@ -91,7 +92,7 @@ const App: React.FC = () => {
   const onChangeOtherName = (e: FormEvent<any>) => setOtherName(e.currentTarget.value);
   const onChangeTalk = (e: FormEvent<any>) => setTalk(e.currentTarget.value);
   const addMessage = () => {
-    alert(`${message.name}「${message.talk}」`);
+    setMessageList([...messageList, {...message}]);
   };
 
   return (
@@ -133,6 +134,13 @@ const App: React.FC = () => {
           </Form>
         </Col>
       </Row>
+      {messageList.length > 0 && 
+        <Row className="my-3">
+          <Col className="border">
+            <MessageView messageList={messageList} />
+          </Col>
+        </Row>
+      }
     </Container>
   );
 };
