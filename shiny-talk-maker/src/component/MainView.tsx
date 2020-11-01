@@ -3,9 +3,9 @@ import { Col, Container, Row } from 'react-bootstrap';
 
 import ApplicationInfo from 'component/ApplicationInfo';
 import InputForm from 'component/InputForm';
-import MessageView from 'component/MessageView';
 import Title from 'component/Title';
 import { ApplicationContext } from 'setvice/store';
+import MessageListView from './MessageListView';
 
 // メイン画面
 const MainView: React.FC = () => {
@@ -31,7 +31,7 @@ const MainView: React.FC = () => {
       {messageList.length > 0 &&
         <Row className="my-3">
           <Col className="border">
-            <MessageView messageList={messageList} />
+            <MessageListView />
           </Col>
         </Row>
       }
