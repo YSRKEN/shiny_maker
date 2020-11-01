@@ -8,7 +8,7 @@ export const useStore = (): Store => {
   const [messageList, setMessageList] = useState<Message[]>([]);
   // メッセージ一覧における分割位置
   // -1だと未分割、1だとインデックス0～1のものが上部、それ以外が下部となる
-  const [messageListSplitIndex, setMessageListSplitIndex] = useState(2);
+  const [messageListSplitIndex, setMessageListSplitIndex] = useState(-1);
 
   const dispatch = (action: Action) => {
     switch (action.type) {
@@ -21,7 +21,11 @@ export const useStore = (): Store => {
       // メッセージ一覧の分割位置を変更する
       case 'setSplitIndex': {
         const index = parseInt(action.message as string);
-        setMessageListSplitIndex(index);
+        if (messageListSplitIndex !== index) {
+          setMessageListSplitIndex(index);
+        } else {
+          setMessageListSplitIndex(-1);
+        }
         break;
       }
     }
