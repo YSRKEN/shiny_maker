@@ -1,5 +1,5 @@
-import { Message } from 'model/Message';
 import React from 'react';
+import { Message } from 'model/Message';
 
 // メッセージ一覧
 const MessageView: React.FC<{messageList: Message[]}> = ({messageList}) => {
