@@ -30,7 +30,7 @@ const App: React.FC = () => {
       </Row>
       <Row className="my-3">
         <Col>
-          <InputForm messageList={messageList} addMessage={addMessage} />
+          <InputForm addMessage={addMessage} />
         </Col>
       </Row>
       {messageList.length > 0 &&

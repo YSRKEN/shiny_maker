@@ -8,9 +8,8 @@ import { findCharacterByFullName } from 'setvice/utility';
 
 // メッセージ一覧
 const InputForm: React.FC<{
-  messageList: Message[],
   addMessage: (message: Message) => void
-}> = ({messageList, addMessage}) => {
+}> = ({addMessage}) => {
   const [characterName, setCharacterName] = useState('櫻木真乃');
   const [otherName, setOtherName] = useState('観客');
   const [talk, setTalk] = useState('はい、鳩さんとは仲良しで、\nつい時間を忘れて遊んでしまうんです');
