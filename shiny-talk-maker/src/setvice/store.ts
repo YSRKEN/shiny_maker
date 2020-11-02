@@ -18,6 +18,23 @@ export const useStore = (): Store => {
         setMessageList([...messageList, {...message}]);
         break;
       }
+      // 指定位置のメッセージを全削除する
+      case 'deleteMessage': {
+        const newMessageList: Message[] = [];
+        for (let i = 0; i < messageList.length; i += 1) {
+          if (messageListSplitIndex !== i) {
+            newMessageList.push({...messageList[i]});
+          }
+        }
+        setMessageList(newMessageList);
+        setMessageListSplitIndex(-1);
+        break;
+      }
+      // メッセージを全削除する
+      case 'deleteAllMessage': {
+        setMessageList([]);
+        break;
+      }
       // メッセージ一覧の分割位置を変更する
       case 'setSplitIndex': {
         const index = parseInt(action.message as string);

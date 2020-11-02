@@ -30,4 +30,4 @@ export const CHARACTER_LIST: Character[] = [
   { shortName: '', fullName: 'その他', type: 'other' },
 ];
 
-export type ActionType = 'addMessage' | 'setSplitIndex';
+export type ActionType = 'addMessage' | 'deleteMessage' | 'deleteAllMessage' | 'setSplitIndex';

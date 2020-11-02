@@ -5,18 +5,30 @@ import { Button, Form } from 'react-bootstrap';
 
 // 登録したメッセージの一覧＋操作ボタン
 const MessageListView: React.FC = () => {
-  const { messageList, messageListSplitIndex } = useContext(ApplicationContext);
+  const { messageList, messageListSplitIndex, dispatch } = useContext(ApplicationContext);
+
+  const onClickDeleteMessage = () => {
+    if (window.confirm('このメッセージを削除しますか？')) {
+      dispatch({type: 'deleteMessage'});
+    }
+  }
+  
+  const onClickDeleteAllMessage = () => {
+    if (window.confirm('全てのメッセージを削除しますか？')) {
+      dispatch({type: 'deleteAllMessage'});
+    }
+  }
 
   if (messageListSplitIndex < 0 || messageList.length <= messageListSplitIndex) {
     return <Form className="my-3">
       <div className="text-center">
         <Form.Group className="d-none d-sm-inline">
           <Button className="mr-3">保存</Button>
-          <Button variant="danger">削除</Button>
+          <Button variant="danger" onClick={onClickDeleteAllMessage}>全削除</Button>
         </Form.Group>
         <Form.Group className="d-inline d-sm-none">
           <Button className="mr-3">保存</Button>
-          <Button variant="danger">削除</Button>
+          <Button variant="danger" onClick={onClickDeleteAllMessage}>全削除</Button>
         </Form.Group>
       </div>
       <MessageView messageList={messageList} startIndex={0} />
@@ -31,7 +43,7 @@ const MessageListView: React.FC = () => {
           <Button className="mr-3">∨</Button>
           <Button className="mr-3" variant="warning">転送</Button>
           <Button className="mr-3" variant="warning">上書</Button>
-          <Button variant="danger">削除</Button>
+          <Button variant="danger" onClick={onClickDeleteMessage}>削除</Button>
         </Form.Group>
         <Form.Group className="d-inline d-sm-none">
           <Button size="sm" className="mr-2">挿入</Button>
@@ -39,7 +51,7 @@ const MessageListView: React.FC = () => {
           <Button size="sm" className="mr-2">∨</Button>
           <Button size="sm" className="mr-2" variant="warning">転送</Button>
           <Button size="sm" className="mr-2" variant="warning">上書</Button>
-          <Button size="sm" variant="danger">削除</Button>
+          <Button size="sm" variant="danger" onClick={onClickDeleteMessage}>削除</Button>
         </Form.Group>
       </div>
       <MessageView messageList={messageList.slice(messageListSplitIndex + 1, messageList.length)} startIndex={messageListSplitIndex + 1} />
