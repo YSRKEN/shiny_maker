@@ -57,6 +57,44 @@ export const useStore = (): Store => {
         setMessageList([]);
         break;
       }
+      // メッセージを上に動かす
+      case 'upToMessage': {
+        if (messageListSplitIndex === 0) {
+          break;
+        }
+        const newMessageList: Message[] = [];
+        for (let i = 0; i < messageList.length; i += 1) {
+          if (i === messageListSplitIndex - 1) {
+            newMessageList.push({ ...messageList[i + 1] });
+          } else if (i === messageListSplitIndex) {
+            newMessageList.push({ ...messageList[i - 1] });
+          } else {
+            newMessageList.push({ ...messageList[i] });
+          }
+        }
+        setMessageList(newMessageList);
+        setMessageListSplitIndex((i) => i - 1);
+        break;
+      }
+      // メッセージを下に動かす
+      case 'downToMessage': {
+        if (messageListSplitIndex === messageList.length - 1) {
+          break;
+        }
+        const newMessageList: Message[] = [];
+        for (let i = 0; i < messageList.length; i += 1) {
+          if (i === messageListSplitIndex + 1) {
+            newMessageList.push({ ...messageList[i - 1] });
+          } else if (i === messageListSplitIndex) {
+            newMessageList.push({ ...messageList[i + 1] });
+          } else {
+            newMessageList.push({ ...messageList[i] });
+          }
+        }
+        setMessageList(newMessageList);
+        setMessageListSplitIndex((i) => i + 1);
+        break;
+      }
       // メッセージ一覧の分割位置を変更する
       case 'setSplitIndex': {
         const index = parseInt(action.message as string);

@@ -23,6 +23,14 @@ const MessageListView: React.FC = () => {
     }
   }
 
+  const onClickUpToMessage = () => {
+    dispatch({type: 'upToMessage'});
+  }
+
+  const onClickDownToMessage = () => {
+    dispatch({type: 'downToMessage'});
+  }
+
   if (messageListSplitIndex < 0 || messageList.length <= messageListSplitIndex) {
     return <Form className="my-3">
       <div className="text-center">
@@ -43,16 +51,16 @@ const MessageListView: React.FC = () => {
       <div className="text-center">
         <Form.Group className="d-none d-sm-inline">
           <Button className="mr-3" onClick={onClickInsertMessage}>挿入</Button>
-          <Button className="mr-3">∧</Button>
-          <Button className="mr-3">∨</Button>
+          <Button className="mr-3" onClick={onClickUpToMessage} disabled={messageListSplitIndex === 0}>∧</Button>
+          <Button className="mr-3" onClick={onClickDownToMessage} disabled={messageListSplitIndex === messageList.length - 1}>∨</Button>
           <Button className="mr-3" variant="warning">転送</Button>
           <Button className="mr-3" variant="warning">上書</Button>
           <Button variant="danger" onClick={onClickDeleteMessage}>削除</Button>
         </Form.Group>
         <Form.Group className="d-inline d-sm-none">
           <Button size="sm" className="mr-2" onClick={onClickInsertMessage}>挿入</Button>
-          <Button size="sm" className="mr-2">∧</Button>
-          <Button size="sm" className="mr-2">∨</Button>
+          <Button size="sm" className="mr-2" onClick={onClickUpToMessage} disabled={messageListSplitIndex === 0}>∧</Button>
+          <Button size="sm" className="mr-2" onClick={onClickDownToMessage} disabled={messageListSplitIndex === messageList.length - 1}>∨</Button>
           <Button size="sm" className="mr-2" variant="warning">転送</Button>
           <Button size="sm" className="mr-2" variant="warning">上書</Button>
           <Button size="sm" variant="danger" onClick={onClickDeleteMessage}>削除</Button>
