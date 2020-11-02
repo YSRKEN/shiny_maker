@@ -14,24 +14,22 @@ const InputForm: React.FC = () => {
   const [characterName, setCharacterName] = useState('櫻木真乃');
   const [otherName, setOtherName] = useState('観客');
   const [talk, setTalk] = useState('はい、鳩さんとは仲良しで、\nつい時間を忘れて遊んでしまうんです');
-  const [message, setMessage] = useState<Message>({
-    name: '真乃', talk: 'はい、鳩さんとは仲良しで、\nつい時間を忘れて遊んでしまうんです', type: 'idol'
-  });
 
   // 入力フォームの内容が変更された際、入力されることになるメッセージの内容を更新する
   useEffect(() => {
     const character = findCharacterByFullName(characterName);
     if (character.type !== 'other') {
-      setMessage({ name: character.shortName, talk, type: character.type });
+      dispatch({type: 'setMessage', message: JSON.stringify({ name: character.shortName, talk, type: character.type })});
     } else {
-      setMessage({ name: otherName, talk, type: character.type });
+      dispatch({type: 'setMessage', message: JSON.stringify({ name: otherName, talk, type: character.type })});
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [characterName, otherName, talk]);
 
   const onChangeCharacterName = (e: FormEvent<any>) => setCharacterName(e.currentTarget.value);
   const onChangeOtherName = (e: FormEvent<any>) => setOtherName(e.currentTarget.value);
   const onChangeTalk = (e: FormEvent<any>) => setTalk(e.currentTarget.value);
-  const onClickAddMessageButton = () => dispatch({type: 'addMessage', message: JSON.stringify(message)});
+  const onClickAddMessageButton = () => dispatch({type: 'addMessage'});
 
   return   <Form className="border px-3 pt-3">
   <Form.Group>
@@ -48,7 +46,7 @@ const InputForm: React.FC = () => {
   </Form.Group>
   <Form.Group>
     <Form.Label>プレビュー</Form.Label>
-    <Preview message={message} />
+    <Preview />
   </Form.Group>
   <Form.Group>
     <Button className="w-100" onClick={onClickAddMessageButton}>追加</Button>

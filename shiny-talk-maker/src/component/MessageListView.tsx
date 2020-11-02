@@ -7,6 +7,10 @@ import { Button, Form } from 'react-bootstrap';
 const MessageListView: React.FC = () => {
   const { messageList, messageListSplitIndex, dispatch } = useContext(ApplicationContext);
 
+  const onClickInsertMessage = () => {
+    dispatch({type: 'insertMessage'});
+  }
+
   const onClickDeleteMessage = () => {
     if (window.confirm('このメッセージを削除しますか？')) {
       dispatch({type: 'deleteMessage'});
@@ -38,7 +42,7 @@ const MessageListView: React.FC = () => {
       <MessageView messageList={messageList.slice(0, messageListSplitIndex + 1)} startIndex={0} />
       <div className="text-center">
         <Form.Group className="d-none d-sm-inline">
-          <Button className="mr-3">挿入</Button>
+          <Button className="mr-3" onClick={onClickInsertMessage}>挿入</Button>
           <Button className="mr-3">∧</Button>
           <Button className="mr-3">∨</Button>
           <Button className="mr-3" variant="warning">転送</Button>
@@ -46,7 +50,7 @@ const MessageListView: React.FC = () => {
           <Button variant="danger" onClick={onClickDeleteMessage}>削除</Button>
         </Form.Group>
         <Form.Group className="d-inline d-sm-none">
-          <Button size="sm" className="mr-2">挿入</Button>
+          <Button size="sm" className="mr-2" onClick={onClickInsertMessage}>挿入</Button>
           <Button size="sm" className="mr-2">∧</Button>
           <Button size="sm" className="mr-2">∨</Button>
           <Button size="sm" className="mr-2" variant="warning">転送</Button>

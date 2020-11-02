@@ -4,6 +4,10 @@ import { Store } from "model/Store";
 import { createContext, useState } from "react";
 
 export const useStore = (): Store => {
+  // 現在入力中のメッセージ
+  const [nowMessage, setNowMessage] = useState<Message>({
+    name: '真乃', talk: 'はい、鳩さんとは仲良しで、\nつい時間を忘れて遊んでしまうんです', type: 'idol'
+  });
   // メッセージ一覧
   const [messageList, setMessageList] = useState<Message[]>([]);
   // メッセージ一覧における分割位置
@@ -12,10 +16,28 @@ export const useStore = (): Store => {
 
   const dispatch = (action: Action) => {
     switch (action.type) {
+      // メッセージを更新する
+      case 'setMessage': {
+        const message = JSON.parse(action.message as string) as Message;
+        setNowMessage(message);
+        break;
+      }
       // メッセージを追加する
       case 'addMessage': {
-        const message = JSON.parse(action.message as string) as Message;
-        setMessageList([...messageList, {...message}]);
+        setMessageList([...messageList, { ...nowMessage }]);
+        break;
+      }
+      // 指定位置にメッセージを挿入する
+      case 'insertMessage': {
+        const newMessageList: Message[] = [];
+        for (let i = 0; i < messageList.length; i += 1) {
+          newMessageList.push({ ...messageList[i] });
+          if (messageListSplitIndex === i) {
+            newMessageList.push(nowMessage);
+          }
+        }
+        setMessageList(newMessageList);
+        setMessageListSplitIndex(-1);
         break;
       }
       // 指定位置のメッセージを全削除する
@@ -23,7 +45,7 @@ export const useStore = (): Store => {
         const newMessageList: Message[] = [];
         for (let i = 0; i < messageList.length; i += 1) {
           if (messageListSplitIndex !== i) {
-            newMessageList.push({...messageList[i]});
+            newMessageList.push({ ...messageList[i] });
           }
         }
         setMessageList(newMessageList);
@@ -49,6 +71,7 @@ export const useStore = (): Store => {
   };
 
   return {
+    nowMessage,
     messageList,
     messageListSplitIndex,
     dispatch

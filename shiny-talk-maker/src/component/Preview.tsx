@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import MessageView from 'component/MessageView';
-import { Message } from 'model/Message';
+import { ApplicationContext } from 'setvice/store';
 
 // プレビュー表示
-const Preview: React.FC<{message: Message}> = ({message}) => {
+const Preview: React.FC = () => {
+  const { nowMessage } = useContext(ApplicationContext);
+
   return <div className="border w-100">
-    <MessageView messageList={[message]} />
+    <MessageView messageList={[nowMessage]} />
   </div>;
 };
 
