@@ -1,7 +1,7 @@
 import React from 'react';
 
 import MainView from 'component/MainView';
-import { ApplicationContext, useStore } from 'setvice/store';
+import { ApplicationContext, useStore } from 'service/store';
 
 // メイン画面
 const App: React.FC = () => {
