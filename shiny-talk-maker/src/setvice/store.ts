@@ -95,6 +95,23 @@ export const useStore = (): Store => {
         setMessageListSplitIndex((i) => i + 1);
         break;
       }
+      // フォームの内容でメッセージを上書き
+      case 'upDateMessageFromForm': {
+        const newMessageList: Message[] = [];
+        for (let i = 0; i < messageList.length; i += 1) {
+          if (i === messageListSplitIndex) {
+            newMessageList.push({ ...nowMessage});
+          } else {
+            newMessageList.push({ ...messageList[i] });
+          }
+        }
+        setMessageList(newMessageList);
+        break;
+      }
+      // フォームの内容をこのメッセージで上書き
+      case 'upDateMessageToForm':
+        setNowMessage({...messageList[messageListSplitIndex]});
+        break;
       // メッセージ一覧の分割位置を変更する
       case 'setSplitIndex': {
         const index = parseInt(action.message as string);

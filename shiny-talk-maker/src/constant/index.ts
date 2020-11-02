@@ -31,4 +31,4 @@ export const CHARACTER_LIST: Character[] = [
 ];
 
 export type ActionType = 'setMessage' | 'addMessage' | 'insertMessage' | 'deleteMessage' | 'deleteAllMessage'
-  | 'upToMessage' | 'downToMessage' | 'setSplitIndex';
+  | 'upToMessage' | 'downToMessage' | 'upDateMessageFromForm' | 'upDateMessageToForm' | 'updateMessageToForm' |'setSplitIndex';
