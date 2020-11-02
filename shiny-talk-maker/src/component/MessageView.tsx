@@ -10,7 +10,7 @@ const MessageView: React.FC<{messageList: Message[], startIndex?: number}> = ({m
 
   return <>
     {messageList.map((message, index) =>
-    <div className="m-3 p-1 border" onClick={() => onClickMessageView(index)}>
+    <div className="m-3 p-1 border" key={startIndex + index} onClick={() => onClickMessageView(index)}>
       <span>{message.name}</span><br />
       <pre>{message.talk}</pre>
     </div>)

@@ -3,7 +3,6 @@ import { Button, Form } from 'react-bootstrap';
 
 import Preview from 'component/Preview';
 import { CHARACTER_LIST } from 'constant';
-import { Message } from 'model/Message';
 import { findCharacterByFullName } from 'setvice/utility';
 import { ApplicationContext } from 'setvice/store';
 
