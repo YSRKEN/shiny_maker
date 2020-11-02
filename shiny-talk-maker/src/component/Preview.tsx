@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import MessageView from 'component/MessageView';
-import { ApplicationContext } from 'setvice/store';
+import { ApplicationContext } from 'service/store';
 
 // プレビュー表示
 const Preview: React.FC = () => {

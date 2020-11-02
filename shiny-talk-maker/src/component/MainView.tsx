@@ -4,7 +4,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import ApplicationInfo from 'component/ApplicationInfo';
 import InputForm from 'component/InputForm';
 import Title from 'component/Title';
-import { ApplicationContext } from 'setvice/store';
+import { ApplicationContext } from 'service/store';
 import MessageListView from './MessageListView';
 
 // メイン画面

@@ -1,9 +1,17 @@
+import { CHARACTER_LIST } from "constant";
 import { Action } from "model/Action";
 import { Message } from "model/Message";
 import { Store } from "model/Store";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+import { findCharacterByFullName } from "service/utility";
 
 export const useStore = (): Store => {
+  // キャラクター名
+  const [characterName, setCharacterName] = useState('櫻木真乃');
+  // 入力キャラクター名
+  const [otherName, setOtherName] = useState('観客');
+  // メッセージの内容
+  const [talk, setTalk] = useState('はい、鳩さんとは仲良しで、\nつい時間を忘れて遊んでしまうんです');
   // 現在入力中のメッセージ
   const [nowMessage, setNowMessage] = useState<Message>({
     name: '真乃', talk: 'はい、鳩さんとは仲良しで、\nつい時間を忘れて遊んでしまうんです', type: 'idol'
@@ -14,14 +22,29 @@ export const useStore = (): Store => {
   // -1だと未分割、1だとインデックス0～1のものが上部、それ以外が下部となる
   const [messageListSplitIndex, setMessageListSplitIndex] = useState(-1);
 
+  // 入力フォームの内容が変更された際、入力されることになるメッセージの内容を更新する
+  useEffect(() => {
+    const character = findCharacterByFullName(characterName);
+    if (character.type !== 'other') {
+      setNowMessage({ name: character.shortName, talk, type: character.type });
+    } else {
+      setNowMessage({ name: otherName, talk, type: character.type });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [characterName, otherName, talk]);
+
   const dispatch = (action: Action) => {
     switch (action.type) {
-      // メッセージを更新する
-      case 'setMessage': {
-        const message = JSON.parse(action.message as string) as Message;
-        setNowMessage(message);
+      // setter
+      case 'setCharacterName':
+        setCharacterName(action.message as string);
         break;
-      }
+      case 'setOtherName':
+        setOtherName(action.message as string);
+        break;
+      case 'setTalk':
+        setTalk(action.message as string);
+        break;
       // メッセージを追加する
       case 'addMessage': {
         setMessageList([...messageList, { ...nowMessage }]);
@@ -100,7 +123,7 @@ export const useStore = (): Store => {
         const newMessageList: Message[] = [];
         for (let i = 0; i < messageList.length; i += 1) {
           if (i === messageListSplitIndex) {
-            newMessageList.push({ ...nowMessage});
+            newMessageList.push({ ...nowMessage });
           } else {
             newMessageList.push({ ...messageList[i] });
           }
@@ -109,9 +132,18 @@ export const useStore = (): Store => {
         break;
       }
       // フォームの内容をこのメッセージで上書き
-      case 'upDateMessageToForm':
-        setNowMessage({...messageList[messageListSplitIndex]});
+      case 'upDateMessageToForm': {
+        setNowMessage({ ...messageList[messageListSplitIndex] });
+        setTalk(messageList[messageListSplitIndex].talk);
+        const temp = CHARACTER_LIST.filter(c => c.shortName === messageList[messageListSplitIndex].name);
+        if (temp.length > 0) {
+          setCharacterName(temp[0].fullName);
+        } else {
+          setCharacterName('その他');
+          setOtherName(messageList[messageListSplitIndex].name);
+        }
         break;
+      }
       // メッセージ一覧の分割位置を変更する
       case 'setSplitIndex': {
         const index = parseInt(action.message as string);
@@ -126,6 +158,9 @@ export const useStore = (): Store => {
   };
 
   return {
+    characterName,
+    otherName,
+    talk,
     nowMessage,
     messageList,
     messageListSplitIndex,

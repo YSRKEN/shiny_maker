@@ -30,5 +30,6 @@ export const CHARACTER_LIST: Character[] = [
   { shortName: '', fullName: 'その他', type: 'other' },
 ];
 
-export type ActionType = 'setMessage' | 'addMessage' | 'insertMessage' | 'deleteMessage' | 'deleteAllMessage'
-  | 'upToMessage' | 'downToMessage' | 'upDateMessageFromForm' | 'upDateMessageToForm' | 'updateMessageToForm' |'setSplitIndex';
+export type ActionType = 'setCharacterName' | 'setOtherName' | 'setTalk' | 'addMessage' | 'insertMessage'
+  | 'deleteMessage' | 'deleteAllMessage' | 'upToMessage' | 'downToMessage' | 'upDateMessageFromForm'
+  | 'upDateMessageToForm' | 'updateMessageToForm' |'setSplitIndex';

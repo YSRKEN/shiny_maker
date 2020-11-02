@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Message } from 'model/Message';
-import { ApplicationContext } from 'setvice/store';
+import { ApplicationContext } from 'service/store';
 
 // メッセージ一覧
 const MessageView: React.FC<{messageList: Message[], startIndex?: number}> = ({messageList, startIndex=-1}) => {
