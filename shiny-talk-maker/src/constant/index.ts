@@ -26,7 +26,7 @@ export const CHARACTER_LIST: Character[] = [
   { shortName: '雛菜', fullName: '市川雛菜', type: 'idol' },
   { shortName: 'プロデューサー', fullName: 'プロデューサー', type: 'producer' },
   { shortName: 'はづき', fullName: '七草はづき', type: 'assistant' },
-  { shortName: '社長', fullName: '天井社長', type: 'other' },
+  { shortName: '社長', fullName: '天井社長', type: 'president' },
   { shortName: '', fullName: 'その他', type: 'other' },
 ];
 
