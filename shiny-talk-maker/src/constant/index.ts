@@ -41,4 +41,6 @@ export const MESSAGE_NAME_X = 50;
 export const MESSAGE_NAME_Y = 8;
 export const MESSAGE_TALK_X = 40;
 export const MESSAGE_TALK_Y = 60;
+export const MESSAGE_NAME_FONT_SIZE = 30;
+export const MESSAGE_TALK_FONT_SIZE = 24;
 export const MESSAGE_FONT_FAMILY = "'Kosugi Maru', sans-serif";
