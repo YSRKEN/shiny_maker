@@ -3,24 +3,31 @@ import { Action } from "model/Action";
 import { Message } from "model/Message";
 import { Store } from "model/Store";
 import { createContext, useEffect, useState } from "react";
-import { findCharacterByFullName } from "service/utility";
+import { findCharacterByFullName, loadData, saveData } from "service/utility";
 
 export const useStore = (): Store => {
   // キャラクター名
-  const [characterName, setCharacterName] = useState('櫻木真乃');
+  const [characterName, setCharacterName] = useState(loadData('characterName', '櫻木真乃'));
   // 入力キャラクター名
-  const [otherName, setOtherName] = useState('観客');
+  const [otherName, setOtherName] = useState(loadData('otherName', '観客'));
   // メッセージの内容
-  const [talk, setTalk] = useState('はい、鳩さんとは仲良しで、\nつい時間を忘れて遊んでしまうんです');
+  const [talk, setTalk] = useState(loadData('talk', 'はい、鳩さんとは仲良しで、\nつい時間を忘れて遊んでしまうんです'));
   // 現在入力中のメッセージ
-  const [nowMessage, setNowMessage] = useState<Message>({
+  const [nowMessage, setNowMessage] = useState<Message>(loadData<Message>('nowMessage', {
     name: '真乃', talk: 'はい、鳩さんとは仲良しで、\nつい時間を忘れて遊んでしまうんです', type: 'idol'
-  });
+  }));
   // メッセージ一覧
-  const [messageList, setMessageList] = useState<Message[]>([]);
+  const [messageList, setMessageList] = useState<Message[]>(loadData<Message[]>('messageList', []));
   // メッセージ一覧における分割位置
   // -1だと未分割、1だとインデックス0～1のものが上部、それ以外が下部となる
   const [messageListSplitIndex, setMessageListSplitIndex] = useState(-1);
+
+  // 自動セーブ
+  useEffect(() => saveData('characterName', characterName), [characterName]);
+  useEffect(() => saveData('otherName', otherName), [otherName]);
+  useEffect(() => saveData('talk', talk), [talk]);
+  useEffect(() => saveData('nowMessage', nowMessage), [nowMessage]);
+  useEffect(() => saveData('messageList', messageList), [messageList]);
 
   // 入力フォームの内容が変更された際、入力されることになるメッセージの内容を更新する
   useEffect(() => {
