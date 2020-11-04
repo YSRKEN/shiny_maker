@@ -8,6 +8,5 @@ export interface Store {
   nowMessage: Message;
   messageList: Message[];
   messageListSplitIndex: number;
-  saveFlg: boolean;
   dispatch: (action: Action) => void;
 }

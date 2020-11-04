@@ -32,7 +32,7 @@ export const CHARACTER_LIST: Character[] = [
 
 export type ActionType = 'setCharacterName' | 'setOtherName' | 'setTalk' | 'addMessage' | 'insertMessage'
   | 'deleteMessage' | 'deleteAllMessage' | 'upToMessage' | 'downToMessage' | 'upDateMessageFromForm'
-  | 'upDateMessageToForm' | 'updateMessageToForm' |'setSplitIndex' | 'setSaveFlgTrue' | 'setSaveFlgFalse';
+  | 'upDateMessageToForm' | 'updateMessageToForm' |'setSplitIndex';
 
 export const MESSAGE_WIDTH = 850;
 export const MESSAGE_HEIGHT = 170;
