@@ -29,7 +29,7 @@ const MessageView: React.FC<{ messageList: Message[], startIndex?: number }> = (
   const onClickMessageView = (index: number) => dispatch({ type: 'setSplitIndex', message: `${startIndex + index}` });
 
   // JavaScriptで、表示サイズを決定
-  const clientWidth = document.body.clientWidth * 0.8;
+  const clientWidth = document.body.clientWidth * 0.7;
   const width = Math.min(clientWidth, MESSAGE_WIDTH);
   const scale = 1.0 * width / MESSAGE_WIDTH;
 

@@ -15,7 +15,7 @@ const InputForm: React.FC = () => {
   const onChangeTalk = (e: FormEvent<any>) => dispatch({type: 'setTalk', message: e.currentTarget.value});
   const onClickAddMessageButton = () => dispatch({type: 'addMessage'});
 
-  return   <Form className="border px-3 pt-3">
+  return   <Form className="px-3 pt-3">
   <Form.Group>
     <Form.Label>キャラ名</Form.Label>
     <Form.Control as="select" value={characterName} onChange={onChangeCharacterName}>

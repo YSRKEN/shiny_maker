@@ -28,11 +28,18 @@ const AllMessageView: React.FC = () => {
     'other': frameOtherImage
   };
 
+  // JavaScriptで、表示サイズを決定
+  const clientWidth = document.body.clientWidth * 0.7;
+  const width = Math.min(clientWidth, MESSAGE_WIDTH);
+  const scale = 1.0 * width / MESSAGE_WIDTH;
+
   const onClickMessageView = (index: number) => dispatch({ type: 'setSplitIndex', message: `${index}` });
   const onClickSaveMessage = () => {
     const temp = stageRef.current;
     if (temp !== null) {
-      const dataUrl = temp.toDataURL();
+      const dataUrl = temp.toDataURL({
+        pixelRatio: 1.0 / scale
+      });
       const link = document.createElement('a');
       link.download = 'ohanashi.png';
       link.href = dataUrl;
@@ -46,11 +53,6 @@ const AllMessageView: React.FC = () => {
       dispatch({ type: 'deleteAllMessage' });
     }
   }
-
-  // JavaScriptで、表示サイズを決定
-  const clientWidth = document.body.clientWidth * 0.8;
-  const width = Math.min(clientWidth, MESSAGE_WIDTH);
-  const scale = 1.0 * width / MESSAGE_WIDTH;
 
   return <Form className="my-3">
     <div className="text-center">

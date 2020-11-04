@@ -28,12 +28,14 @@ const MainView: React.FC = () => {
           <InputForm />
         </Col>
       </Row>
-      {messageList.length > 0 &&
+      {messageList.length > 0 && <>
+        <hr style={{borderWidth: 3, borderColor: 'black', borderStyle: 'dashed' }} />
         <Row className="my-3">
-          <Col className="border">
+          <Col>
             <MessageListView />
           </Col>
         </Row>
+      </>
       }
     </Container>
   );
