@@ -6,15 +6,16 @@ import { Message } from "model/Message";
 
 const SingleMessageView: React.FC<{
   message: Message,
+  widthOffset: number,
   heightOffset: number,
   imageData: HTMLImageElement | undefined,
-  onClick: () => void
-}> = ({message, heightOffset, imageData, onClick}) => {
+  onClick: () => void,
+}> = ({message, widthOffset, heightOffset, imageData, onClick}) => {
   return <Layer onClick={onClick}>
-  <Image image={imageData} y={heightOffset} width={MESSAGE_WIDTH} height={MESSAGE_HEIGHT} />
-  <Text text={message.name} fontSize={MESSAGE_TALK_FONT_SIZE} x={MESSAGE_NAME_X} y={heightOffset + MESSAGE_NAME_Y}
+  <Image image={imageData} x={widthOffset} y={heightOffset} width={MESSAGE_WIDTH} height={MESSAGE_HEIGHT} />
+  <Text text={message.name} fontSize={MESSAGE_TALK_FONT_SIZE} x={widthOffset + MESSAGE_NAME_X} y={heightOffset + MESSAGE_NAME_Y}
     fontFamily={MESSAGE_FONT_FAMILY} lineHeight={1.0} />
-  <Text text={message.talk} fontSize={MESSAGE_TALK_FONT_SIZE} x={MESSAGE_TALK_X} y={heightOffset + MESSAGE_TALK_Y}
+  <Text text={message.talk} fontSize={MESSAGE_TALK_FONT_SIZE} x={widthOffset + MESSAGE_TALK_X} y={heightOffset + MESSAGE_TALK_Y}
     fontFamily={MESSAGE_FONT_FAMILY} lineHeight={34.0 / 24} />
 </Layer>;
 }

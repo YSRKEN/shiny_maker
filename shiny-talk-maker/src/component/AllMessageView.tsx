@@ -1,7 +1,7 @@
 import React, { useContext, useRef } from 'react';
 import useImage from 'use-image';
 import { ApplicationContext } from 'service/store';
-import { Stage } from 'react-konva';
+import { Layer, Rect, Stage } from 'react-konva';
 import { MESSAGE_HEIGHT, MESSAGE_MARGIN, MESSAGE_WIDTH } from 'constant';
 import frameIdol from 'asset/frame-idol.png';
 import frameProducer from 'asset/frame-producer.png';
@@ -63,15 +63,25 @@ const AllMessageView: React.FC = () => {
         <Button variant="danger" onClick={onClickDeleteAllMessage}>全削除</Button>
       </Form.Group>
     </div>
-    <Stage ref={stageRef} scale={{ x: scale, y: scale }} width={MESSAGE_WIDTH * scale} height={(MESSAGE_HEIGHT * messageList.length + MESSAGE_MARGIN * (messageList.length - 1)) * scale}>
-    {
-      messageList.map((message, index) => {
-        const heightOffset = (MESSAGE_HEIGHT + MESSAGE_MARGIN) * index;
-        return <SingleMessageView key={index} message={message} heightOffset={heightOffset}
-          imageData={typeToImage[message.type as string]} onClick={() => onClickMessageView(index)} />
-      })
-    }
-  </Stage>
+    <Stage ref={stageRef}
+      scale={{ x: scale, y: scale }}
+      width={(MESSAGE_WIDTH + MESSAGE_MARGIN * 2) * scale}
+      height={(MESSAGE_HEIGHT * messageList.length + MESSAGE_MARGIN * (messageList.length + 1)) * scale}>
+      <Layer>
+        <Rect
+          width={MESSAGE_WIDTH + MESSAGE_MARGIN * 2}
+          height={MESSAGE_HEIGHT * messageList.length + MESSAGE_MARGIN * (messageList.length + 1)}
+          fill="white" />
+      </Layer>
+      {
+        messageList.map((message, index) => {
+          const widthOffset = MESSAGE_MARGIN;
+          const heightOffset = (MESSAGE_HEIGHT + MESSAGE_MARGIN) * index + MESSAGE_MARGIN;
+          return <SingleMessageView key={index} message={message} widthOffset={widthOffset} heightOffset={heightOffset}
+            imageData={typeToImage[message.type as string]} onClick={() => onClickMessageView(index)} />
+        })
+      }
+    </Stage>
   </Form>;
 };
 

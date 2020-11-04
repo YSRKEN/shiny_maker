@@ -37,7 +37,7 @@ const MessageView: React.FC<{ messageList: Message[], startIndex?: number }> = (
     {
       messageList.map((message, index) => {
         const heightOffset = (MESSAGE_HEIGHT + MESSAGE_MARGIN) * index;
-        return <SingleMessageView key={index} message={message} heightOffset={heightOffset}
+        return <SingleMessageView key={index} message={message} widthOffset={0} heightOffset={heightOffset}
           imageData={typeToImage[message.type as string]} onClick={() => onClickMessageView(index)} />
       })
     }
