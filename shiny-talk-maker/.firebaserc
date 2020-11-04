@@ -1,0 +1,17 @@
+{
+  "projects": {
+    "default": "shiny-maker"
+  },
+  "targets": {
+    "shiny-maker": {
+      "hosting": {
+        "product": [
+          "shiny-maker"
+        ],
+        "test": [
+          "shiny-maker-test"
+        ]
+      }
+    }
+  }
+}

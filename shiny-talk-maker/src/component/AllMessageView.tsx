@@ -61,7 +61,7 @@ const AllMessageView: React.FC = () => {
         <Button variant="danger" onClick={onClickDeleteAllMessage}>全削除</Button>
       </Form.Group>
       <Form.Group className="d-inline d-sm-none">
-        <Button className="mr-3">保存</Button>
+        <Button className="mr-3" onClick={onClickSaveMessage}>保存</Button>
         <Button variant="danger" onClick={onClickDeleteAllMessage}>全削除</Button>
       </Form.Group>
     </div>

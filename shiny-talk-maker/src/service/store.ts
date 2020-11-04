@@ -34,6 +34,7 @@ export const useStore = (): Store => {
   }, [characterName, otherName, talk]);
 
   const dispatch = (action: Action) => {
+    console.log(action);
     switch (action.type) {
       // setter
       case 'setCharacterName':
