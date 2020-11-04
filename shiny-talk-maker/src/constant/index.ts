@@ -36,6 +36,7 @@ export type ActionType = 'setCharacterName' | 'setOtherName' | 'setTalk' | 'addM
 
 export const MESSAGE_WIDTH = 850;
 export const MESSAGE_HEIGHT = 170;
+export const MESSAGE_MARGIN = 20;
 export const MESSAGE_NAME_X = 50;
 export const MESSAGE_NAME_Y = 8;
 export const MESSAGE_TALK_X = 40;
