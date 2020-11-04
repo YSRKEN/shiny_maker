@@ -9,7 +9,7 @@ const App: React.FC = () => {
 
   return (
     <ApplicationContext.Provider value={store}>
-    <MainView />
+      <MainView />
     </ApplicationContext.Provider>
   );
 };
