@@ -6,9 +6,7 @@ import { ApplicationContext } from 'service/store';
 const Preview: React.FC = () => {
   const { nowMessage } = useContext(ApplicationContext);
 
-  return <div className="border w-100">
-    <MessageView messageList={[nowMessage]} />
-  </div>;
+  return <MessageView messageList={[nowMessage]} />;
 };
 
 export default Preview;

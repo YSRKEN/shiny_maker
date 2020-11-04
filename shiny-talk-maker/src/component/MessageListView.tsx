@@ -43,11 +43,15 @@ const MessageListView: React.FC = () => {
     }
   }
 
+  const onClickSaveMessage = () => {
+    dispatch({type: 'setSaveFlgTrue'});
+  };
+
   if (messageListSplitIndex < 0 || messageList.length <= messageListSplitIndex) {
     return <Form className="my-3">
       <div className="text-center">
         <Form.Group className="d-none d-sm-inline">
-          <Button className="mr-3">保存</Button>
+          <Button className="mr-3"onClick={onClickSaveMessage}>保存</Button>
           <Button variant="danger" onClick={onClickDeleteAllMessage}>全削除</Button>
         </Form.Group>
         <Form.Group className="d-inline d-sm-none">

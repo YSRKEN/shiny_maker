@@ -21,6 +21,8 @@ export const useStore = (): Store => {
   // メッセージ一覧における分割位置
   // -1だと未分割、1だとインデックス0～1のものが上部、それ以外が下部となる
   const [messageListSplitIndex, setMessageListSplitIndex] = useState(-1);
+  // 保存要請が掛かった場合はTrue
+  const [saveFlg, setSaveFlg] = useState(false);
 
   // 入力フォームの内容が変更された際、入力されることになるメッセージの内容を更新する
   useEffect(() => {
@@ -154,6 +156,13 @@ export const useStore = (): Store => {
         }
         break;
       }
+      // セーブフラグをセットする
+      case 'setSaveFlgTrue':
+        setSaveFlg(true);
+        break;
+      case 'setSaveFlgFalse':
+        setSaveFlg(true);
+        break;
     }
   };
 
@@ -164,6 +173,7 @@ export const useStore = (): Store => {
     nowMessage,
     messageList,
     messageListSplitIndex,
+    saveFlg,
     dispatch
   }
 };
