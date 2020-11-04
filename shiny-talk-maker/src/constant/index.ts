@@ -33,3 +33,11 @@ export const CHARACTER_LIST: Character[] = [
 export type ActionType = 'setCharacterName' | 'setOtherName' | 'setTalk' | 'addMessage' | 'insertMessage'
   | 'deleteMessage' | 'deleteAllMessage' | 'upToMessage' | 'downToMessage' | 'upDateMessageFromForm'
   | 'upDateMessageToForm' | 'updateMessageToForm' |'setSplitIndex';
+
+export const MESSAGE_WIDTH = 850;
+export const MESSAGE_HEIGHT = 170;
+export const MESSAGE_NAME_X = 50;
+export const MESSAGE_NAME_Y = 8;
+export const MESSAGE_TALK_X = 40;
+export const MESSAGE_TALK_Y = 60;
+export const MESSAGE_FONT_FAMILY = "'Kosugi Maru', sans-serif";
