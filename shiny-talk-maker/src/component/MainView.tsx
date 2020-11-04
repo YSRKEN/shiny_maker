@@ -5,7 +5,7 @@ import ApplicationInfo from 'component/ApplicationInfo';
 import InputForm from 'component/InputForm';
 import Title from 'component/Title';
 import { ApplicationContext } from 'service/store';
-import MessageListView from './MessageListView';
+import MessageListView from 'component/MessageListView';
 
 // メイン画面
 const MainView: React.FC = () => {

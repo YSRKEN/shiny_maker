@@ -1,14 +1,16 @@
 import React, { useContext, useEffect, useRef } from 'react';
+import useImage from 'use-image';
 import { Message } from 'model/Message';
 import { ApplicationContext } from 'service/store';
-import { Layer, Stage, Text, Image } from 'react-konva';
-import { MESSAGE_FONT_FAMILY, MESSAGE_HEIGHT, MESSAGE_MARGIN, MESSAGE_NAME_X, MESSAGE_NAME_Y, MESSAGE_TALK_FONT_SIZE, MESSAGE_TALK_X, MESSAGE_TALK_Y, MESSAGE_WIDTH } from 'constant';
+import { Stage } from 'react-konva';
+import { MESSAGE_HEIGHT, MESSAGE_MARGIN, MESSAGE_WIDTH } from 'constant';
 import frameIdol from 'asset/frame-idol.png';
 import frameProducer from 'asset/frame-producer.png';
 import frameAssistant from 'asset/frame-assistant.png';
 import frameOther from 'asset/frame-other.png';
-import useImage from 'use-image';
 import { Stage as StageType } from 'konva/types/Stage';
+
+import SingleMessageView from 'component/SingleMessageView';
 
 // メッセージ一覧
 const MessageView: React.FC<{ messageList: Message[], startIndex?: number }> = ({ messageList, startIndex = -1 }) => {
@@ -55,13 +57,8 @@ const MessageView: React.FC<{ messageList: Message[], startIndex?: number }> = (
     {
       messageList.map((message, index) => {
         const heightOffset = (MESSAGE_HEIGHT + MESSAGE_MARGIN) * index;
-        return <Layer key={index} onClick={() => onClickMessageView(index)}>
-          <Image image={typeToImage[message.type as string]} y={heightOffset} width={MESSAGE_WIDTH} height={MESSAGE_HEIGHT} />
-          <Text text={message.name} fontSize={MESSAGE_TALK_FONT_SIZE} x={MESSAGE_NAME_X} y={heightOffset + MESSAGE_NAME_Y}
-            fontFamily={MESSAGE_FONT_FAMILY} lineHeight={1.0} />
-          <Text text={message.talk} fontSize={MESSAGE_TALK_FONT_SIZE} x={MESSAGE_TALK_X} y={heightOffset + MESSAGE_TALK_Y}
-            fontFamily={MESSAGE_FONT_FAMILY} lineHeight={34.0 / 24} />
-        </Layer>;
+        return <SingleMessageView key={index} message={message} heightOffset={heightOffset}
+          imageData={typeToImage[message.type as string]} onClick={() => onClickMessageView(index)} />
       })
     }
   </Stage>
