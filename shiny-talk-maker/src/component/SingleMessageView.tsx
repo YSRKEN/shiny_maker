@@ -11,7 +11,7 @@ const SingleMessageView: React.FC<{
   imageData: HTMLImageElement | undefined,
   onClick: () => void,
 }> = ({message, widthOffset, heightOffset, imageData, onClick}) => {
-  return <Layer onClick={onClick}>
+  return <Layer onClick={onClick} onTap={onClick}>
   <Image image={imageData} x={widthOffset} y={heightOffset} width={MESSAGE_WIDTH} height={MESSAGE_HEIGHT} />
   <Text text={message.name} fontSize={MESSAGE_TALK_FONT_SIZE} x={widthOffset + MESSAGE_NAME_X} y={heightOffset + MESSAGE_NAME_Y}
     fontFamily={MESSAGE_FONT_FAMILY} lineHeight={1.0} />
